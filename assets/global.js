@@ -80,17 +80,19 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   //   event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
   // });
 
-  summary.addEventListener('mouseenter', (event) => {
-  const details = event.currentTarget.closest('details');
-  details.setAttribute('open', true);
-  event.currentTarget.setAttribute('aria-expanded', 'true');
- });
+ document.querySelectorAll('.mega-menu').forEach((details) => {
+  const summary = details.querySelector('summary');
 
-    summary.addEventListener('mouseleave', (event) => {
-      const details = event.currentTarget.closest('details');
-      details.removeAttribute('open');
-      event.currentTarget.setAttribute('aria-expanded', 'false');
-    });
+  details.addEventListener('mouseenter', () => {
+    details.setAttribute('open', true);
+    summary.setAttribute('aria-expanded', 'true');
+  });
+
+  details.addEventListener('mouseleave', () => {
+    details.removeAttribute('open');
+    summary.setAttribute('aria-expanded', 'false');
+  });
+});
 
       if (summary.closest('header-drawer, menu-drawer')) return;
       summary.parentElement.addEventListener('keyup', onKeyUpEscape);
