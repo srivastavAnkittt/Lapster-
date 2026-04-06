@@ -76,10 +76,22 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
     summary.setAttribute('aria-controls', summary.nextElementSibling.id);
   }
 
+  // summary.addEventListener('mouseenter', (event) => {
+  //   alert();
+  //   event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
+  // });
+
   summary.addEventListener('mouseenter', (event) => {
-    alert();
-    event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
-  });
+  const details = event.currentTarget.closest('details');
+  details.setAttribute('open', true);
+  event.currentTarget.setAttribute('aria-expanded', 'true');
+});
+
+summary.addEventListener('mouseleave', (event) => {
+  const details = event.currentTarget.closest('details');
+  details.removeAttribute('open');
+  event.currentTarget.setAttribute('aria-expanded', 'false');
+});
 
   if (summary.closest('header-drawer, menu-drawer')) return;
   summary.parentElement.addEventListener('keyup', onKeyUpEscape);
