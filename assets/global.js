@@ -107,35 +107,6 @@ if (window.innerWidth > 989) {
     });
   });
 }
-// document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
-//   summary.setAttribute('role', 'button');
-//   summary.setAttribute('aria-expanded', summary.parentNode.hasAttribute('open'));
-
-//   if (summary.nextElementSibling?.getAttribute('id')) {
-//     summary.setAttribute('aria-controls', summary.nextElementSibling.id);
-//   }
-
-//   if (summary.closest('header-drawer, menu-drawer')) return;
-//   summary.parentElement.addEventListener('keyup', onKeyUpEscape);
-// });
-
-// document.querySelectorAll('.mega-menu').forEach((details) => {
-//   const summary = details.querySelector('summary');
-//   let timer;
-
-//   details.addEventListener('mouseenter', () => {
-//     clearTimeout(timer);
-//     details.setAttribute('open', true);
-//     summary?.setAttribute('aria-expanded', 'true');
-//   });
-
-//   details.addEventListener('mouseleave', () => {
-//     timer = setTimeout(() => {
-//       details.removeAttribute('open');
-//       summary?.setAttribute('aria-expanded', 'false');
-//     }, 200);
-//   });
-// });
 const trapFocusHandlers = {};
 
 function trapFocus(container, elementToFocus = container) {
