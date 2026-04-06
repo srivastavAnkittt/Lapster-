@@ -86,7 +86,7 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   event.currentTarget.setAttribute('aria-expanded', 'true');
  });
 
-    details.addEventListener('mouseleave', (event) => {
+    summary.addEventListener('mouseleave', (event) => {
       const details = event.currentTarget.closest('details');
       details.removeAttribute('open');
       event.currentTarget.setAttribute('aria-expanded', 'false');
