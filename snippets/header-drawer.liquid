@@ -65,24 +65,33 @@
                                   </a>
                                 {%- else -%}
                                   <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
+                                    {% assign summary_image = blank %}
+
+                                    {% for grandchildlink in childlink.links %}
+                                      {% if grandchildlink.type == 'collection_link'
+                                        and grandchildlink.object != blank
+                                      %}
+                                        {% assign collection = grandchildlink.object %}
+                                        {% if collection.metafields.custom.mega_menu_icon != blank %}
+                                          {% assign summary_image = collection.metafields.custom.mega_menu_icon %}
+                                          {% break %}
+                                        {% endif %}
+                                      {% endif %}
+                                    {% endfor %}
                                     <summary
                                       id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
                                       class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
                                     >
-                                      {% assign collection = grandchildlink.object %}
-                                      {% if grandchildlink.type == 'collection_link' and collection != blank %}
-                                        {% if collection.metafields.custom.mega_menu_icon != blank %}
-                                          <span class="mobile-collection-item__image">
-                                            <img
-                                              src="{{ collection.metafields.custom.mega_menu_icon | image_url: width: 50 }}"
-                                              alt="{{ grandchildlink.title | escape }}"
-                                              width="50"
-                                              height="50"
-                                            >
-                                          </span>
-                                        {% endif %}
+                                      {% if summary_image != blank %}
+                                        <span class="mobile-collection-item__image">
+                                          <img
+                                            src="{{ summary_image | image_url: width: 50 }}"
+                                            alt="{{ childlink.title | escape }}"
+                                            width="50"
+                                            height="50"
+                                          >
+                                        </span>
                                       {% endif %}
-
                                       {{ childlink.title | escape }} kkkkkkkkk
                                       <span class="svg-wrapper">
                                         {{- 'icon-arrow.svg' | inline_asset_content -}}
