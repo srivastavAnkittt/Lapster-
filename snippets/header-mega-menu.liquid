@@ -59,7 +59,7 @@
                                 {% endif %}
                               >
                                 {% assign collection = grandchildlink.object %}
-                                <div class="mega-menu-item__image">
+                                <div class="mega-menu-item__image" style="display:flex;">
                                 {% if collection.metafields.custom.mega_menu_icon != blank %}
                                     <img 
                                       src="{{ collection.metafields.custom.mega_menu_icon | image_url: width: 80 }}" 
