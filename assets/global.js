@@ -68,35 +68,66 @@ class HTMLUpdateUtility {
   }
 }
 
+
 document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   summary.setAttribute('role', 'button');
   summary.setAttribute('aria-expanded', summary.parentNode.hasAttribute('open'));
 
-  if (summary.nextElementSibling.getAttribute('id')) {
+  if (summary.nextElementSibling?.getAttribute('id')) {
     summary.setAttribute('aria-controls', summary.nextElementSibling.id);
   }
 
-  // summary.addEventListener('click', (event) => {
-  //   event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
-  // });
+  if (summary.closest('header-drawer, menu-drawer')) return;
+  summary.parentElement.addEventListener('keyup', onKeyUpEscape);
+});
 
- document.querySelectorAll('.mega-menu').forEach((details) => {
+document.querySelectorAll('.mega-menu').forEach((details) => {
   const summary = details.querySelector('summary');
+  let timer;
 
   details.addEventListener('mouseenter', () => {
+    clearTimeout(timer);
     details.setAttribute('open', true);
-    summary.setAttribute('aria-expanded', 'true');
+    summary?.setAttribute('aria-expanded', 'true');
   });
 
   details.addEventListener('mouseleave', () => {
-    details.removeAttribute('open');
-    summary.setAttribute('aria-expanded', 'false');
+    timer = setTimeout(() => {
+      details.removeAttribute('open');
+      summary?.setAttribute('aria-expanded', 'false');
+    }, 200);
   });
 });
 
-      if (summary.closest('header-drawer, menu-drawer')) return;
-      summary.parentElement.addEventListener('keyup', onKeyUpEscape);
-    });
+// document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
+//   summary.setAttribute('role', 'button');
+//   summary.setAttribute('aria-expanded', summary.parentNode.hasAttribute('open'));
+
+//   if (summary.nextElementSibling.getAttribute('id')) {
+//     summary.setAttribute('aria-controls', summary.nextElementSibling.id);
+//   }
+
+//   // summary.addEventListener('click', (event) => {
+//   //   event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
+//   // });
+
+//  document.querySelectorAll('.mega-menu').forEach((details) => {
+//   const summary = details.querySelector('summary');
+
+//   details.addEventListener('mouseenter', () => {
+//     details.setAttribute('open', true);
+//     summary.setAttribute('aria-expanded', 'true');
+//   });
+
+//   details.addEventListener('mouseleave', () => {
+//     details.removeAttribute('open');
+//     summary.setAttribute('aria-expanded', 'false');
+//   });
+// });
+
+//       if (summary.closest('header-drawer, menu-drawer')) return;
+//       summary.parentElement.addEventListener('keyup', onKeyUpEscape);
+//     });
 
 const trapFocusHandlers = {};
 
