@@ -76,15 +76,15 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
     summary.setAttribute('aria-controls', summary.nextElementSibling.id);
   }
 
-  summary.addEventListener('click', (event) => {
-    event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
-  });
+  // summary.addEventListener('click', (event) => {
+  //   event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
+  // });
 
-//   summary.addEventListener('mouseenter', (event) => {
-//   const details = event.currentTarget.closest('details');
-//   details.setAttribute('open', true);
-//   event.currentTarget.setAttribute('aria-expanded', 'true');
-// });
+  summary.addEventListener('mouseenter', (event) => {
+  const details = event.currentTarget.closest('details');
+  details.setAttribute('open', true);
+  event.currentTarget.setAttribute('aria-expanded', 'true');
+});
 
 // summary.addEventListener('mouseleave', (event) => {
 //   const details = event.currentTarget.closest('details');
