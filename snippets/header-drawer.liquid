@@ -66,30 +66,44 @@
                                 {%- else -%}
                                   <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
                                     <summary
+  id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+  class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
+>
+  {{ childlink.title | escape }}
+  <span class="svg-wrapper">
+    {{- 'icon-arrow.svg' | inline_asset_content -}}
+  </span>
+  <span class="svg-wrapper">
+    {{- 'icon-caret.svg' | inline_asset_content -}}
+  </span>
+</summary>
+                                    {% comment %} <summary
                                       id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
                                       class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
                                     >
-                                    {% assign collection = childlink.object %}
-                                    <div class="mega-menu-item__image" style="display:flex; align-items: center;">
-                                {% if collection.metafields.custom.mega_menu_icon != blank %}
-                                    <img 
-                                      src="{{ collection.metafields.custom.mega_menu_icon | image_url: width: 40 }}" 
-                                      alt="{{ childlink.title }}"
-                                      width="40"
-                                      height="40"
-                                    >
-                                  
-                                {% endif %}
+                                      {% assign collection = childlink.object %}
+                                      {% comment %}
+                                        <div class="mega-menu-item__image" style="display:flex; align-items: center;">
+                                        {% if collection.metafields.custom.mega_menu_icon != blank %}
+                                            <img
+                                              src="{{ collection.metafields.custom.mega_menu_icon | image_url: width: 40 }}"
+                                              alt="{{ childlink.title }}"
+                                              width="40"
+                                              height="40"
+                                            >
+
+                                        {% endif %}
+                                      {% endcomment %}
 
                                       {{ childlink.title | escape }}
-                                      </div>
+                                      {% comment %} </div> {% endcomment %}
                                       <span class="svg-wrapper">
                                         {{- 'icon-arrow.svg' | inline_asset_content -}}
                                       </span>
                                       <span class="svg-wrapper">
                                         {{- 'icon-caret.svg' | inline_asset_content -}}
                                       </span>
-                                    </summary>
+                                    </summary> {% endcomment %}
                                     <div
                                       id="childlink-{{ childlink.handle | escape }}"
                                       class="menu-drawer__submenu has-submenu gradient motion-reduce"
@@ -110,6 +124,7 @@
                                       >
                                         {%- for grandchildlink in childlink.links -%}
                                           <li>
+                                            {% assign collection = grandchildlink.object %}
                                             <a
                                               id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                               href="{{ grandchildlink.url }}"
@@ -118,6 +133,19 @@
                                                 aria-current="page"
                                               {% endif %}
                                             >
+                                              {% if grandchildlink.type == 'collection_link' and collection != blank %}
+                                                {% if collection.metafields.custom.mega_menu_icon != blank %}
+                                                  <span class="mobile-collection-item__image">
+                                                    <img
+                                                      src="{{ collection.metafields.custom.mega_menu_icon | image_url: width: 50 }}"
+                                                      alt="{{ grandchildlink.title | escape }}"
+                                                      width="50"
+                                                      height="50"
+                                                    >
+                                                  </span>
+                                                {% endif %}
+                                              {% endif %}
+
                                               {{ grandchildlink.title | escape }}
                                             </a>
                                           </li>
