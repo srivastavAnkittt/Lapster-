@@ -58,6 +58,17 @@
                                   aria-current="page"
                                 {% endif %}
                               >
+                                {% assign collection = childlink.object %}
+                                {% if collection.metafields.custom.menu_image != blank %}
+                                  <div class="mega-menu-item__image">
+                                    <img 
+                                      src="{{ collection.metafields.custom.menu_image | image_url: width: 80 }}" 
+                                      alt="{{ childlink.title }}"
+                                      width="80"
+                                      height="80"
+                                    >
+                                  </div>
+                                {% endif %}
                                 {{ grandchildlink.title | escape }}
                               </a>
                             </li>
