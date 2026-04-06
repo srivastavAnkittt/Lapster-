@@ -51,7 +51,7 @@
                           </button>
                           <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1" kkkakakak>
                             {%- for childlink in link.links -%}
-                              <li>
+                              <li class="sub-list">
                                 {%- if childlink.links == blank -%}
                                   <a
                                     id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
