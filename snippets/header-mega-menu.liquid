@@ -26,7 +26,7 @@
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
               <div
-                id="MegaMenu-Content-{{ forloop.index }} lll"
+                id="MegaMenu-Content-{{ forloop.index }}"
                 class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
                 tabindex="-1"
               >
@@ -51,7 +51,7 @@
                           {%- for grandchildlink in childlink.links -%}
                             <li>
                               <a
-                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }} abcccc"
                                 href="{{ grandchildlink.url }}"
                                 class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
                                 {% if grandchildlink.current %}
