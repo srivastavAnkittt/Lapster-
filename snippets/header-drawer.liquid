@@ -69,7 +69,20 @@
                                       id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
                                       class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
                                     >
-                                      {{ childlink.title | escape }} fff
+                                    {% assign collection = childlink.object %}
+                                    <div class="mega-menu-item__image" style="display:flex; align-items: center;">
+                                {% if collection.metafields.custom.mega_menu_icon != blank %}
+                                    <img 
+                                      src="{{ collection.metafields.custom.mega_menu_icon | image_url: width: 40 }}" 
+                                      alt="{{ childlink.title }}"
+                                      width="40"
+                                      height="40"
+                                    >
+                                  
+                                {% endif %}
+
+                                      {{ childlink.title | escape }}
+                                      </div>
                                       <span class="svg-wrapper">
                                         {{- 'icon-arrow.svg' | inline_asset_content -}}
                                       </span>
