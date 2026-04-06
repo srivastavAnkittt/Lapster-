@@ -69,22 +69,21 @@
                                       id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
                                       class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
                                     >
-                                      {% comment %} {% assign collection = childlink.object %} {% endcomment %}
-                                      {% comment %}
-                                        <div class="mega-menu-item__image" style="display:flex; align-items: center;">
+                                      {% assign collection = grandchildlink.object %}
+                                      {% if grandchildlink.type == 'collection_link' and collection != blank %}
                                         {% if collection.metafields.custom.mega_menu_icon != blank %}
+                                          <span class="mobile-collection-item__image">
                                             <img
-                                              src="{{ collection.metafields.custom.mega_menu_icon | image_url: width: 40 }}"
-                                              alt="{{ childlink.title }}"
-                                              width="40"
-                                              height="40"
+                                              src="{{ collection.metafields.custom.mega_menu_icon | image_url: width: 50 }}"
+                                              alt="{{ grandchildlink.title | escape }}"
+                                              width="50"
+                                              height="50"
                                             >
-
+                                          </span>
                                         {% endif %}
-                                      {% endcomment %}
+                                      {% endif %}
 
                                       {{ childlink.title | escape }} kkkkkkkkk
-                                      {% comment %} </div> {% endcomment %}
                                       <span class="svg-wrapper">
                                         {{- 'icon-arrow.svg' | inline_asset_content -}}
                                       </span>
@@ -112,7 +111,6 @@
                                       >
                                         {%- for grandchildlink in childlink.links -%}
                                           <li>
-                                            {% assign collection = grandchildlink.object %}
                                             <a
                                               id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                               href="{{ grandchildlink.url }}"
@@ -121,19 +119,6 @@
                                                 aria-current="page"
                                               {% endif %}
                                             >
-                                              {% if grandchildlink.type == 'collection_link' and collection != blank %}
-                                                {% if collection.metafields.custom.mega_menu_icon != blank %}
-                                                  <span class="mobile-collection-item__image">
-                                                    <img
-                                                      src="{{ collection.metafields.custom.mega_menu_icon | image_url: width: 50 }}"
-                                                      alt="{{ grandchildlink.title | escape }}"
-                                                      width="50"
-                                                      height="50"
-                                                    >
-                                                  </span>
-                                                {% endif %}
-                                              {% endif %}
-
                                               {{ grandchildlink.title | escape }}
                                             </a>
                                           </li>
