@@ -84,17 +84,17 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   const details = event.currentTarget.closest('details');
   details.setAttribute('open', true);
   event.currentTarget.setAttribute('aria-expanded', 'true');
-});
+ });
 
-details.addEventListener('mouseleave', (event) => {
-  const details = event.currentTarget.closest('details');
-  details.removeAttribute('open');
-  event.currentTarget.setAttribute('aria-expanded', 'false');
-});
+    details.addEventListener('mouseleave', (event) => {
+      const details = event.currentTarget.closest('details');
+      details.removeAttribute('open');
+      event.currentTarget.setAttribute('aria-expanded', 'false');
+    });
 
-  if (summary.closest('header-drawer, menu-drawer')) return;
-  summary.parentElement.addEventListener('keyup', onKeyUpEscape);
-});
+      if (summary.closest('header-drawer, menu-drawer')) return;
+      summary.parentElement.addEventListener('keyup', onKeyUpEscape);
+    });
 
 const trapFocusHandlers = {};
 
