@@ -86,11 +86,11 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   event.currentTarget.setAttribute('aria-expanded', 'true');
 });
 
-// summary.addEventListener('mouseleave', (event) => {
-//   const details = event.currentTarget.closest('details');
-//   details.removeAttribute('open');
-//   event.currentTarget.setAttribute('aria-expanded', 'false');
-// });
+summary.addEventListener('mouseleave', (event) => {
+  const details = event.currentTarget.closest('details');
+  details.removeAttribute('open');
+  event.currentTarget.setAttribute('aria-expanded', 'false');
+});
 
   if (summary.closest('header-drawer, menu-drawer')) return;
   summary.parentElement.addEventListener('keyup', onKeyUpEscape);
