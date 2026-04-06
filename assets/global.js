@@ -91,19 +91,19 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
 if (window.innerWidth > 989) {
   document.querySelectorAll('.mega-menu').forEach((details) => {
     const summary = details.querySelector('summary');
-    let timer;
+    // let timer;
 
     details.addEventListener('mouseenter', () => {
-      clearTimeout(timer);
+      // clearTimeout(timer);
       details.setAttribute('open', true);
       summary?.setAttribute('aria-expanded', 'true');
     });
 
     details.addEventListener('mouseleave', () => {
-      timer = setTimeout(() => {
+      // timer = setTimeout(() => {
         details.removeAttribute('open');
         summary?.setAttribute('aria-expanded', 'false');
-      }, 200);
+      // }, 200);
     });
   });
 }
