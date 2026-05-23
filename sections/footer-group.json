@@ -14,11 +14,11 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "brand_information_BP3KXF": {
-          "type": "brand_information",
-          "disabled": true,
+        "newsletter_mGbPFa": {
+          "type": "newsletter",
           "settings": {
-            "show_social": true
+            "newsletter_enable2": true,
+            "newsletter_heading2": "Subscribe to our emails"
           }
         },
         "brand_information_TLY43g": {
@@ -50,7 +50,7 @@
         }
       },
       "block_order": [
-        "brand_information_BP3KXF",
+        "newsletter_mGbPFa",
         "brand_information_TLY43g",
         "link_list_KJWiyr",
         "link_list_KYeRT9",
