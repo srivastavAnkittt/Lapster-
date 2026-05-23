@@ -54,7 +54,7 @@
         "heading_UpV6qf": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>OurCategories</strong>",
+            "heading": "<strong>Our Categories</strong>",
             "heading_size": "h1"
           }
         },
@@ -360,7 +360,7 @@
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 0
+        "padding_bottom": 56
       }
     }
   },
