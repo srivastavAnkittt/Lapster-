@@ -290,7 +290,8 @@
         onload="this.media='all'"
       >
     {%- endif -%}
- {% render 'custom-font' %}
+     {{ 'custom-font.css' | asset_url | stylesheet_tag: preload: true }}
+ {% comment %} {% render 'custom-font' %} {% endcomment %}
     <script>
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
