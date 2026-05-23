@@ -132,8 +132,6 @@
                         {%- render 'social-icons', class: 'footer__list-social' -%}
                       {%- endif -%}
                     </div>
-                     {%- when 'newsletter' -%}
-                      {% render 'news-letter' %}
                   {%- when 'image' -%}
                     <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
                       {%- if block.settings.image != blank -%}
@@ -381,24 +379,6 @@
           "default": "t:sections.footer.blocks.text.settings.subtext.default",
           "label": "t:sections.footer.blocks.text.settings.subtext.label"
         }
-      ]
-    },
-    {
-      "type": "newsletter",
-      "name": "News letter ",
-      "settings": [
-       {
-      "type": "checkbox",
-      "id": "newsletter_enable2",
-      "default": true,
-      "label": "t:sections.footer.settings.newsletter_enable.label"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "newsletter_heading2",
-      "default": "t:sections.footer.settings.newsletter_heading.default",
-      "label": "t:sections.footer.settings.newsletter_heading.label"
-    },
       ]
     },
     {
