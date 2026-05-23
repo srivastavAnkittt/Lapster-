@@ -24,7 +24,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>About Us– Lapster</strong>",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
         "text_nH6n87": {
@@ -45,7 +45,7 @@
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     },
     "rich_text_W6iy3X": {
@@ -55,27 +55,27 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>OurCategories</strong>",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
         "heading_LztGQx": {
           "type": "heading",
           "settings": {
             "heading": "<strong>Mobile Accessories</strong>",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "text_8ABfXW": {
           "type": "text",
           "settings": {
-            "text": "<p>Reliable and high-performance mobile accessories<br/>including chargers, cables, adapters, holders, stands, and other everyday<br/>smartphone essentials designed for convenience and durability<br/><br/><br/><br/></p>"
+            "text": "<p>Reliable and high-performance mobile accessories<br/>including chargers, cables, adapters, holders, stands, and other everyday<br/>smartphone essentials designed for convenience and durability<br/></p>"
           }
         },
         "heading_KV4Pc4": {
           "type": "heading",
           "settings": {
             "heading": "<strong>PC Accessories</strong>",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "text_qLnEic": {
@@ -99,7 +99,7 @@
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     },
     "rich_text_bfyFaB": {
@@ -107,13 +107,15 @@
       "blocks": {
         "heading_rL6YeD": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "heading": "<strong>Our Categories</strong>",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
         "heading_ErjGFL": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "heading": "<strong>Mobile Accessories</strong>",
             "heading_size": "h1"
@@ -121,12 +123,14 @@
         },
         "text_Ab9ica": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Reliable and high-performance mobile accessories<br/>including chargers, cables, adapters, holders, stands, and other everyday<br/>smartphone essentials designed for convenience and durability<br/><br/><br/><br/></p>"
           }
         },
         "heading_RUMQPd": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "heading": "<strong>PC Accessories</strong>",
             "heading_size": "h1"
@@ -134,6 +138,7 @@
         },
         "text_ttUAiP": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Smart workspace and computing accessories<br/>built for professionals, gamers, students, and creators — including cooling<br/>pads, keyboards, mice, docking accessories, and productivity-enhancing tools.</p>"
           }
@@ -146,6 +151,7 @@
         "heading_RUMQPd",
         "text_ttUAiP"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "left",
@@ -153,7 +159,7 @@
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     },
     "rich_text_Qf9fdU": {
@@ -163,7 +169,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>Car Accessories</strong>",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "text_PPmiME": {
@@ -176,7 +182,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>Content Creation Accessories</strong>",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "text_nPXw8x": {
@@ -199,7 +205,7 @@
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     },
     "rich_text_MkFcim": {
@@ -209,7 +215,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>Our Vision</strong>",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
         "text_iK3jbq": {
@@ -230,7 +236,7 @@
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     },
     "rich_text_kRcGij": {
@@ -240,7 +246,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>Our Mission</strong>",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
         "text_3pwcUg": {
@@ -261,7 +267,7 @@
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     },
     "rich_text_AyDNNB": {
@@ -271,7 +277,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>Our Reformation & Brand Philosophy</strong>",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
         "text_Ww7THJ": {
@@ -292,7 +298,7 @@
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     },
     "rich_text_nP979H": {
@@ -302,7 +308,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>Why Choose Lapster?</strong>",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
         "text_PdMemW": {
@@ -323,7 +329,7 @@
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     },
     "rich_text_DMEdTx": {
@@ -333,7 +339,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>Our Commitment</strong>",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
         "text_wnQ9gz": {
@@ -354,7 +360,7 @@
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     }
   },
