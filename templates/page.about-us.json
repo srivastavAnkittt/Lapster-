@@ -11,13 +11,58 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "rich_text_pXFbHb": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Y9iCen": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>About Us– Lapster</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_nH6n87": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Welcome to <a href=\"https://lapster.in?utm_source=chatgpt.com\" target=\"_blank\" title=\"Lapster\">Lapster</a> — a Mumbai-based electronics accessories brand dedicated to enhancing<br/>modern lifestyles through smart, reliable, and innovative technology products.</p><p>At Lapster, we believe technology accessories<br/>are more than just add-ons — they are essential tools that improve convenience,<br/>productivity, creativity, and everyday experiences. Built with a passion for<br/>innovation and quality, Lapster offers a wide range of electronic accessories<br/>designed for today’s fast-moving digital world.</p><p>From mobile and PC accessories to car<br/>utilities and content creation essentials, our products are created to deliver<br/>the perfect balance of functionality, durability, affordability, and style.</p><p>Based in Mumbai — one of India’s<br/>fastest-growing business and technology hubs — Lapster continuously evolves to<br/>meet the changing needs of modern consumers, creators, professionals, and tech<br/>enthusiasts.</p>"
+          }
+        },
+        "button_3zdHLT": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_Y9iCen",
+        "text_nH6n87",
+        "button_3zdHLT"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "rich_text_pXFbHb"
   ]
 }
