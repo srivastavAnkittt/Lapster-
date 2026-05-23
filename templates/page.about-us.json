@@ -24,7 +24,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>About Us– Lapster</strong>",
-            "heading_size": "h1"
+            "heading_size": "h0"
           }
         },
         "text_nH6n87": {
@@ -32,23 +32,320 @@
           "settings": {
             "text": "<p>Welcome to <a href=\"https://lapster.in?utm_source=chatgpt.com\" target=\"_blank\" title=\"Lapster\">Lapster</a> — a Mumbai-based electronics accessories brand dedicated to enhancing<br/>modern lifestyles through smart, reliable, and innovative technology products.</p><p>At Lapster, we believe technology accessories<br/>are more than just add-ons — they are essential tools that improve convenience,<br/>productivity, creativity, and everyday experiences. Built with a passion for<br/>innovation and quality, Lapster offers a wide range of electronic accessories<br/>designed for today’s fast-moving digital world.</p><p>From mobile and PC accessories to car<br/>utilities and content creation essentials, our products are created to deliver<br/>the perfect balance of functionality, durability, affordability, and style.</p><p>Based in Mumbai — one of India’s<br/>fastest-growing business and technology hubs — Lapster continuously evolves to<br/>meet the changing needs of modern consumers, creators, professionals, and tech<br/>enthusiasts.</p>"
           }
-        },
-        "button_3zdHLT": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
         }
       },
       "block_order": [
         "heading_Y9iCen",
-        "text_nH6n87",
-        "button_3zdHLT"
+        "text_nH6n87"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_W6iy3X": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_UpV6qf": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>OurCategories</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "heading_LztGQx": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Mobile Accessories</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_8ABfXW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Reliable and high-performance mobile accessories<br/>including chargers, cables, adapters, holders, stands, and other everyday<br/>smartphone essentials designed for convenience and durability<br/><br/><br/><br/></p>"
+          }
+        },
+        "heading_KV4Pc4": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>PC Accessories</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_qLnEic": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Smart workspace and computing accessories<br/>built for professionals, gamers, students, and creators — including cooling<br/>pads, keyboards, mice, docking accessories, and productivity-enhancing tools.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UpV6qf",
+        "heading_LztGQx",
+        "text_8ABfXW",
+        "heading_KV4Pc4",
+        "text_qLnEic"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_bfyFaB": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rL6YeD": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Our Categories</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "heading_ErjGFL": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Mobile Accessories</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_Ab9ica": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Reliable and high-performance mobile accessories<br/>including chargers, cables, adapters, holders, stands, and other everyday<br/>smartphone essentials designed for convenience and durability<br/><br/><br/><br/></p>"
+          }
+        },
+        "heading_RUMQPd": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>PC Accessories</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_ttUAiP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Smart workspace and computing accessories<br/>built for professionals, gamers, students, and creators — including cooling<br/>pads, keyboards, mice, docking accessories, and productivity-enhancing tools.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_rL6YeD",
+        "heading_ErjGFL",
+        "text_Ab9ica",
+        "heading_RUMQPd",
+        "text_ttUAiP"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_Qf9fdU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_aNzcbW": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Car Accessories</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_PPmiME": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Innovative car accessories designed to improve<br/>safety, comfort, charging efficiency, and convenience while driving. Our<br/>products help create a smarter and more connected driving experience.</p>"
+          }
+        },
+        "heading_JB8drt": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Content Creation Accessories</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_nPXw8x": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Designed for modern creators, influencers,<br/>streamers, and photographers, Lapster’s content creation range includes LED<br/>lights, selfie lights, ring lights, and creator essentials that help produce<br/>professional-quality content anytime, anywhere.</p><p>As digital content continues to shape<br/>communication and entertainment, Lapster aims to empower creators with<br/>affordable and reliable lighting solutions that enhance creativity and visual<br/>quality.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_aNzcbW",
+        "text_PPmiME",
+        "heading_JB8drt",
+        "text_nPXw8x"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_MkFcim": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_heep4q": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Our Vision</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "text_iK3jbq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>To become a globally trusted electronics<br/>accessories brand recognized for innovation, reliability, affordability, and<br/>customer satisfaction.</p><p>We envision a future where technology<br/>accessories are smarter, more accessible, and designed to seamlessly integrate<br/>into people’s daily lives — whether for work, travel, entertainment, or content<br/>creation.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_heep4q",
+        "text_iK3jbq"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_kRcGij": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_D7aHML": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Our Mission</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "text_3pwcUg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our mission is to create high-quality<br/>electronic accessories that combine technology, functionality, modern design,<br/>and value.</p><p>We strive to:</p><ul><li>Deliver reliable and user-friendly products </li><li>Continuously innovate according to market trends </li><li>Support modern digital lifestyles and creators </li><li>Maintain strong quality standards </li><li>Build long-term trust with customers through excellent service and product performance </li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_D7aHML",
+        "text_3pwcUg"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_AyDNNB": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Ac9ePW": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Our Reformation & Brand Philosophy</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "text_Ww7THJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lapster was created with a vision to reform<br/>the electronic accessories industry by offering products that focus on real<br/>consumer needs instead of temporary trends.</p><p>Our philosophy is built around:</p><ul><li>Innovation with practicality </li><li>Premium quality at accessible pricing </li><li>Modern and minimal product design </li><li>Customer-first approach </li><li>Long-lasting performance and durability </li><li>Continuous improvement through technology and feedback </li></ul><p></p><p>We understand that today’s consumers demand<br/>products that are both functional and aesthetically appealing. That’s why every<br/>Lapster product is carefully designed and tested to ensure it delivers a<br/>superior user experience.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Ac9ePW",
+        "text_Ww7THJ"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_nP979H": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8jdkHN": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Why Choose Lapster?</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "text_PdMemW": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>Wide range of electronic accessories </li><li>Trusted quality and durable products </li><li>Affordable pricing with premium features </li><li>Products designed for modern lifestyles </li><li>Dedicated support and customer satisfaction </li><li>Growing product innovation across multiple categories </li><li>Solutions for professionals, travelers, gamers, drivers, and content creators </li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8jdkHN",
+        "text_PdMemW"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_DMEdTx": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_VW3xye": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Our Commitment</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "text_wnQ9gz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Lapster, we are committed to building<br/>products that simplify life, improve digital experiences, and support the<br/>evolving needs of modern consumers.</p><p>Whether you are charging your smartphone,<br/>upgrading your workspace, enhancing your driving experience, or creating<br/>digital content — Lapster is here to deliver reliable accessories that help you<br/>stay connected, productive, and creative.</p><p>Lapster is more than a brand — it is a growing<br/>community driven by innovation, quality, and the future of smart technology<br/>accessories.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VW3xye",
+        "text_wnQ9gz"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
@@ -63,6 +360,14 @@
   },
   "order": [
     "main",
-    "rich_text_pXFbHb"
+    "rich_text_pXFbHb",
+    "rich_text_W6iy3X",
+    "rich_text_bfyFaB",
+    "rich_text_Qf9fdU",
+    "rich_text_MkFcim",
+    "rich_text_kRcGij",
+    "rich_text_AyDNNB",
+    "rich_text_nP979H",
+    "rich_text_DMEdTx"
   ]
 }
