@@ -14,13 +14,6 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "newsletter_mGbPFa": {
-          "type": "newsletter",
-          "settings": {
-            "newsletter_enable2": true,
-            "newsletter_heading2": "Subscribe to our emails"
-          }
-        },
         "brand_information_TLY43g": {
           "type": "brand_information",
           "settings": {
@@ -50,14 +43,13 @@
         }
       },
       "block_order": [
-        "newsletter_mGbPFa",
         "brand_information_TLY43g",
         "link_list_KJWiyr",
         "link_list_KYeRT9",
         "link_list_gH3tgk"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
         "newsletter_enable": true,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": true,
