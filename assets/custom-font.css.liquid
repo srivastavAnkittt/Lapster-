@@ -103,6 +103,80 @@
 }
 
 /* End Elza font */
+/* Manrope */
+@font-face {
+    font-family: 'Manrope';
+    src: url('{{ "Manrope-Bold.woff2" | asset_url }}') format('woff2'),
+         url('{{ "Manrope-Bold.woff" | asset_url }}') format('woff'),
+         url('{{ "Manrope-Bold.ttf" | asset_url }}') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('{{ "Manrope-ExtraBold.woff2" | asset_url }}') format('woff2'),
+         url('{{ "Manrope-ExtraBold.woff" | asset_url }}') format('woff'),
+         url('{{ "Manrope-ExtraBold.ttf" | asset_url }}') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('{{ "Manrope-ExtraLight.woff2" | asset_url }}') format('woff2'),
+         url('{{ "Manrope-ExtraLight.woff" | asset_url }}') format('woff'),
+         url('{{ "Manrope-ExtraLight.ttf" | asset_url }}') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('{{ "Manrope-Light.woff2" | asset_url }}') format('woff2'),
+         url('{{ "Manrope-Light.woff" | asset_url }}') format('woff'),
+         url('{{ "Manrope-Light.ttf" | asset_url }}') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('{{ "Manrope-Medium.woff2" | asset_url }}') format('woff2'),
+         url('{{ "Manrope-Medium.woff" | asset_url }}') format('woff'),
+         url('{{ "Manrope-Medium.ttf" | asset_url }}') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('{{ "Manrope-SemiBold.woff2" | asset_url }}') format('woff2'),
+         url('{{ "Manrope-SemiBold.woff" | asset_url }}') format('woff'),
+         url('{{ "Manrope-SemiBold.ttf" | asset_url }}') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('{{ "Manrope-Regular.woff2" | asset_url }}') format('woff2'),
+         url('{{ "Manrope-Regular.woff" | asset_url }}') format('woff'),
+         url('{{ "Manrope-Regular.ttf" | asset_url }}') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Manrope */
+
+
 /* h1,
 h2,
 h3,
@@ -135,12 +209,6 @@ h6,
 .h6 {
 	font-family: 'Vinila Condensed Test', 'Segoe UI Symbol', sans-serif !important;
 }
-.price,
-.price-item,
-.money,
-.price-item--sale {
-  font-family: 'Elza Trial', Arial, sans-serif;
-}
 
 /* body,
 p,
@@ -169,10 +237,10 @@ label,
 li,
 ul,
 ol {
-	font-family: 'Elza Trial', Arial, 'Segoe UI Symbol', sans-serif !important;
+	font-family: 'Manrope', Arial, 'Segoe UI Symbol', sans-serif !important;
 }
 
 :root {
 	--font-heading-family: 'Vinila Condensed Test';
-	--font-body-family: 'Elza Trial';
+	--font-body-family: 'Manrope';
 }
