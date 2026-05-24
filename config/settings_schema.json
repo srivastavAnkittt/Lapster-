@@ -258,6 +258,18 @@
         "label": "t:settings_schema.global.settings.opacity.label",
         "default": 100
       },
+        {
+        "type": "color",
+        "id": "body_text",
+        "label": "Button Background",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "button-text",
+        "label": "Button text",
+        "default": "#FFFFFF"
+      },
       {
         "type": "range",
         "id": "buttons_radius",
