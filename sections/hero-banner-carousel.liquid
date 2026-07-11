@@ -365,6 +365,70 @@
       margin-top:8px;
     }
   }
+  .hero-split-media.full-width-media {
+  width: 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.hero-split-media.full-width-media .square-banner-slide,
+.hero-split-media.full-width-media picture,
+.hero-split-media.full-width-media img,
+.hero-split-media.full-width-media video {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+.square-banner-media,
+.square-banner-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-split-slide.is-full-width .hero-split-media {
+  width: 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.hero-split-slide.is-full-width .hero-split-content {
+  display: none !important;
+}
+.hero-split-slide {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.hero-split-media {
+  width: 70%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-split-content {
+  width: 30%;
+}
+
+/* Checkbox enabled */
+.hero-split-slide.is-full-width .hero-split-media {
+  width: 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.hero-split-slide.is-full-width .hero-split-content {
+  display: none !important;
+}
+
+.square-banner-media,
+.square-banner-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
   @keyframes fadeInLeft {
     0% {
@@ -414,7 +478,7 @@
               {% assign badge_bg = block.settings.birthday-sale %}
 
             <div class="swiper-slide">
-              <div class="hero-split-slide ">
+              <div class="hero-split-slide{% if block.settings.full_width_image %} is-full-width{% endif %}">
                 <div class="hero-split-media bbbb{% if block.settings.full_width_image %} full-width-media{% endif %}">
                   <a
                     href="{{ block.settings['banner-url'] }}"
