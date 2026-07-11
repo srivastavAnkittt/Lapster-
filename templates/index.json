@@ -57,7 +57,7 @@
           "settings": {
             "gradient_bg": "",
             "banner_top_tag": "none",
-            "full_width_image": true,
+            "full_width_image": false,
             "banner-url": "",
             "banner-image-desktop": "shopify://shop_images/Desktop_Banner.png",
             "banner-image-mobile": "shopify://shop_images/mobile_banner.png",
@@ -67,10 +67,10 @@
             "button_style": "button-style-dark",
             "button-color": "",
             "button_text": "Shop Now",
-            "cta_text": "",
-            "cta_subtext": "",
-            "cta_text_mobile": "",
-            "cta_subtext_mobile": ""
+            "cta_text": "<h3><strong>Lorem Ipsum</strong></h3>",
+            "cta_subtext": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry.</p>",
+            "cta_text_mobile": "<h3><strong>Lorem Ipsum</strong></h3>",
+            "cta_subtext_mobile": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry.</p>"
           }
         }
       },
