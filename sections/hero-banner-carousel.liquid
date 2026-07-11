@@ -37,10 +37,6 @@
 
   }
 
-  /* .hero-split-media.full-width-media {
-    width: 100%;
-  } */
-
   .hero-split-content.hide-content-info {
     display: none;
   }
@@ -75,7 +71,6 @@
   }
 
   .banner-info-text h3 {
-    /* font-family: var(--header-family); */
     font-weight: 700;
     font-size: clamp(24px, 3vw, 42px);
     line-height: 1.15;
@@ -358,12 +353,8 @@
       font-size: 30px;
       font-weight: 400;
       letter-spacing:-1px;
-      /* min-height:65px; */
     }
 
-    /* .sub-content_main_banner p{
-       min-height:75px;
-    } */
     .banner-info-top-tag {
       top: 20px;
       right: 24px;
@@ -420,13 +411,6 @@
                 assign fetch_priority = 'auto'
               endif
             %}
-
-          {% comment %} {% assign badge_bg = blank %}
-          {% for item in section.blocks %}
-            {% if item.type == 'badge' and item.settings.badge != blank %}
-              {% break %}
-              {% endif %}
-              {% endfor %} {% endcomment %}
               {% assign badge_bg = block.settings.birthday-sale %}
 
             <div class="swiper-slide">
@@ -619,22 +603,6 @@
                           </div>
                         {% endif %}
                       {% endif %}
-
-                      {% comment %}
-                        {% render 'sale-timer'  color: {{ block.settings.button-color-v }}%}
-
-                        {% assign media_desktop = block.settings['banner-video-desktop'] %}
-                         	{% assign media_mobile = block.settings['banner-video-mobile'] %}
-                        {% if block.settings.button_style != 'none' %}
-                          <div class="banner-info-content-button">
-                            <a href="{{ block.settings['banner-url'] }}">
-                              <button class="ahh d-center {{ block.settings.button_style }}"  {% if media_desktop or media_mobile  %} style="background: {{ block.settings.button-color-v | default: '#937EF9'}}"{%  else %}style="background: {{ block.settings.button-color | default: '#937EF9'}}"{% endif %} type="button">
-                                {{ block.settings.button_text }}
-                              </button>
-                            </a>
-                          </div>
-                        {% endif %}
-                      {% endcomment %}
                     </div>
                   </div>
                 {% endif %}
