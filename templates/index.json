@@ -35,6 +35,7 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
@@ -46,6 +47,44 @@
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "hero_banner_carousel_GmwLnp": {
+      "type": "hero-banner-carousel",
+      "blocks": {
+        "image_media_Egr99h": {
+          "type": "image-media",
+          "settings": {
+            "gradient_bg": "",
+            "banner_top_tag": "none",
+            "full_width_image": true,
+            "banner-url": "",
+            "banner-image-desktop": "shopify://shop_images/Desktop_Banner.png",
+            "banner-image-mobile": "shopify://shop_images/mobile_banner.png",
+            "show_gradient": "none",
+            "gradient_condition": "gradient_on_all",
+            "text_style": "text-dark",
+            "button_style": "button-style-dark",
+            "button-color": "",
+            "button_text": "Shop Now",
+            "cta_text": "",
+            "cta_subtext": "",
+            "cta_text_mobile": "",
+            "cta_subtext_mobile": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_media_Egr99h"
+      ],
+      "name": "Hero Carousel Layout",
+      "settings": {
+        "showContainer": "page-width",
+        "seo_text": "",
+        "enableShuffle": false,
+        "loop": true,
+        "pagination_margin_top": 34,
+        "slide_speed": 500
       }
     },
     "featured_collection": {
@@ -79,6 +118,7 @@
   },
   "order": [
     "image_banner",
+    "hero_banner_carousel_GmwLnp",
     "featured_collection"
   ]
 }
