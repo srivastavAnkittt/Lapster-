@@ -644,13 +644,13 @@
                       {% if media_desktop != blank or media_mobile != blank %}
                         {% assign button_bg_color = block.settings['button-color-v'] | default: '#937EF9' %}
                       {% endif %}
-                      {% comment %} {% assign countdown_deadline = block.settings.deadline_date | append: 'T' | append: block.settings.deadline_time | append: ':00+05:30' %} {% endcomment %}
+                       {% assign countdown_deadline = block.settings.deadline_date | append: 'T' | append: block.settings.deadline_time | append: ':00+05:30' %} 
 
-                      {% comment %} {% if display_option == 'timer' or display_option == 'both' %}
+                      {% if display_option == 'timer' or display_option == 'both' %}
                         <div class="banner-sale-timer">
                           {% render 'sale-timer', color: button_bg_color, countdown_deadline_custom:countdown_deadline %}
                         </div>
-                      {% endif %} {% endcomment %}
+                      {% endif %} 
 
                       {% if display_option == 'button' or display_option == 'both' %}
                         {% if block.settings.button_style != 'none' %}
