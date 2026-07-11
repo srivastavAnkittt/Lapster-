@@ -57,7 +57,7 @@
           "settings": {
             "gradient_bg": "",
             "banner_top_tag": "none",
-            "full_width_image": false,
+            "full_width_image": true,
             "banner-url": "",
             "banner-image-desktop": "shopify://shop_images/Desktop_Banner.png",
             "banner-image-mobile": "shopify://shop_images/mobile_banner.png",
