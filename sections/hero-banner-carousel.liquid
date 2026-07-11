@@ -30,11 +30,15 @@
   .hero-split-content {
     width: 30%;
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
-    padding: 32px 31px;
+    padding: 32px 58px;
     background: #FFF6F2;
 
+  }
+
+  .hero-split-media.full-width-media {
+    width: 100%;
   }
 
   .hero-split-content.hide-content-info {
@@ -71,6 +75,7 @@
   }
 
   .banner-info-text h3 {
+    /* font-family: var(--header-family); */
     font-weight: 700;
     font-size: clamp(24px, 3vw, 42px);
     line-height: 1.15;
@@ -81,7 +86,7 @@
     height: 10px;
   }
 
-
+ 
   .banner-info-content-button {
     width: 100%;
   }
@@ -97,7 +102,7 @@
     transition: 0.3s ease;
     width:40%;
     margin-top:24px;
-
+   
   }
 
   .banner-info-content-button button.button-style-dark {
@@ -224,7 +229,7 @@
       line-height: normal;
     }
   @media screen and (min-width: 768px) {
-
+    
 
   #hero-pagination-wrapper-{{ section.id }} {
      margin-top: {{ section.settings.pagination_margin_top }}px;
@@ -232,7 +237,7 @@
     .gradient_mobile::before {
       background: transparent;
     }
-
+    
     .banner-info-text.desktop_screen {
       display: block;
     }
@@ -283,7 +288,7 @@
     order: 1;
     overflow: hidden;
   }
-
+  
   .hero-split-content {
     width: 100%;
     order: 2;
@@ -293,7 +298,7 @@
     overflow: visible !important;
    justify-content: flex-start;
     z-index: 2;
-
+   
   }
 
     .gradient_look:before {
@@ -307,11 +312,11 @@
       font-size: 30px;
       font-style: normal;
       font-weight: 400;
-      line-height: 28px;
+      line-height: 28px; 
       letter-spacing: -0.6px;
       margin-bottom:8px;
     }
-
+    
     .banner-info-text.mobile_screen {
       display: block;
     }
@@ -328,10 +333,10 @@
     .hero-split-media,
     .hero-split-content {
       width: 100%;
-
-
+      
+      
     }
-
+  
     .hero-split-content {
       order: 2;
       padding: 16px  24px 32px 24px;
@@ -353,8 +358,12 @@
       font-size: 30px;
       font-weight: 400;
       letter-spacing:-1px;
+      /* min-height:65px; */
     }
 
+    /* .sub-content_main_banner p{
+       min-height:75px;
+    } */
     .banner-info-top-tag {
       top: 20px;
       right: 24px;
@@ -376,33 +385,15 @@
       transform: translate3d(0, 0, 0);
     }
   }
-
-
-  .custom-logo{
-  position:relative;
-}
-.custom-logo::before {
-      content: "";
-      position: absolute;
-      width: 113px;
-      height: 110px;
-      top: -9px;
-      right: 25px;
-      background-image: var(--badge-bg);
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: 1;
-    }
 {%- endstyle -%}
 <div class="section-{{ section.id }}-margin">
   <div class="{% if section.settings.showContainer %}{{ section.settings.showContainer }}{% endif %} carousel-section-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     <div class="carousel-nav-wrapper">
-      <div id="hero-banner-layout-{{ section.id }}" class="carousel-wrapper-outer overflow-hidden jjj">
+      <div id="hero-banner-layout-{{ section.id }}" class="carousel-wrapper-outer overflow-hidden">
         <div class="carousel-wrapper-inner swiper-wrapper">
           {% for block in section.blocks %}
             {% liquid
-              assign desktop_image = block.settings['banner-image-desktop']
+              assign desktop_image = block.settings.banner-image-desktop
               if forloop.first
                 assign loading_attr = 'eager'
                 assign fetch_priority = 'high'
@@ -411,11 +402,10 @@
                 assign fetch_priority = 'auto'
               endif
             %}
-              {% assign badge_bg = block.settings.birthday-sale %}
 
             <div class="swiper-slide">
-              <div class="hero-split-slide ">
-                <div class="hero-split-media bbbb{% if block.settings.full_width_image %} full-width-media{% endif %}">
+              <div class="hero-split-slide">
+                <div class="hero-split-media{% if block.settings.full_width_image %} full-width-media{% endif %}">
                   <a
                     href="{{ block.settings['banner-url'] }}"
                     class="square-banner-slide{% if block.settings.show_gradient != "none" %} gradient_look {{ block.settings.show_gradient }} {{ block.settings.gradient_condition }}{% endif %}"
@@ -426,8 +416,8 @@
                     {% case block.type %}
                       {% when 'image-media' %}
                         <picture>
-                          {% if block.settings['banner-image-mobile'] != blank %}
-                            {% assign mobile_image = block.settings['banner-image-mobile'] %}
+                          {% if block.settings.banner-image-mobile != blank %}
+                            {% assign mobile_image = block.settings.banner-image-mobile %}
                             <source
                               media="(max-width: 767px)"
                               srcset="
@@ -537,12 +527,7 @@
                 </div>
 
                 {% if block.settings.cta_text != blank %}
-                  <div
-  class="custom-logo hero-split-content{% if block.settings.full_width_image %} hide-content-info{% endif %}{% if block.settings.content_visibility %} {{ block.settings.content_visibility }}{% endif %}"
-  {% if block.settings.gradient_bg != blank or badge_bg != blank %}
-    style="{% if block.settings.gradient_bg != blank %}background: {{ block.settings.gradient_bg }};{% endif %}{% if badge_bg != blank %} --badge-bg: url('{{ badge_bg | image_url: width: 200 }}');{% endif %}"
-  {% endif %}
->
+                  <div class="hero-split-content{% if block.settings.full_width_image %} hide-content-info{% endif %}{% if block.settings.content_visibility %} {{ block.settings.content_visibility }}{% endif %}">
                     <div class="banner-info-content">
                       {% if block.settings.logo %}
                         <div class="banner-info-content-logo mb-0 mb-md-3">
@@ -569,41 +554,18 @@
                           <div class="sub-content_main_banner">{{ block.settings.cta_subtext_mobile }}</div>
                         </div>
                       </div>
-
+                          
                       {% assign media_desktop = block.settings['banner-video-desktop'] %}
-                      {% assign media_mobile = block.settings['banner-video-mobile'] %}
-
-                      {% assign display_option = block.settings.timer_button_display | default: 'button' %}
-
-                      {% assign button_bg_color = block.settings['button-color'] | default: '#937EF9' %}
-
-                      {% if media_desktop != blank or media_mobile != blank %}
-                        {% assign button_bg_color = block.settings['button-color-v'] | default: '#937EF9' %}
-                      {% endif %}
-                      {% assign countdown_deadline = block.settings.deadline_date | append: 'T' | append: block.settings.deadline_time | append: ':00+05:30' %}
-
-                      {% if display_option == 'timer' or display_option == 'both' %}
-                        <div class="banner-sale-timer">
-                          {% render 'sale-timer', color: button_bg_color, countdown_deadline_custom:countdown_deadline %}
+                       	{% assign media_mobile = block.settings['banner-video-mobile'] %}
+                      {% if block.settings.button_style != 'none' %}
+                        <div class="banner-info-content-button">
+                          <a href="{{ block.settings['banner-url'] }}">
+                            <button class="ahh d-center {{ block.settings.button_style }}"  {% if media_desktop or media_mobile  %} style="background: {{ block.settings.button-color-v | default: '#937EF9'}}"{%  else %}style="background: {{ block.settings.button-color | default: '#937EF9'}}"{% endif %} type="button">
+                              {{ block.settings.button_text }}
+                            </button>
+                          </a>
                         </div>
                       {% endif %}
-
-                      {% if display_option == 'button' or display_option == 'both' %}
-                        {% if block.settings.button_style != 'none' %}
-                          <div class="banner-info-content-button">
-                            <a href="{{ block.settings['banner-url'] }}">
-                              <button
-                                class="ahh d-center {{ block.settings.button_style }}"
-                                style="background: {{ button_bg_color }};"
-                                type="button"
-                              >
-                                {{ block.settings.button_text }}
-                              </button>
-                            </a>
-                          </div>
-                        {% endif %}
-                      {% endif %}
-
                     </div>
                   </div>
                 {% endif %}
@@ -646,11 +608,10 @@
       loop: {{ section.settings.loop }},
       speed: 900,
       touchStartForcePreventDefault: true,
-      {% comment %} autoplay:  false, {% endcomment %}
       autoplay: {
         delay: 16000,
         disableOnInteraction: false
-      }, 
+      },
       navigation: {
         prevEl: '#carousel-prev-{{ section.id }}',
         nextEl: '#carousel-next-{{ section.id }}',
@@ -738,7 +699,7 @@
       "info": "If enabled ,Infinite container will enabled",
       "default": true
     },
-    {
+       {
       "type": "range",
       "id": "pagination_margin_top",
       "label": "Pagination Margin Top",
@@ -764,11 +725,6 @@
       "type": "image-media",
       "name": "Image Media",
       "settings": [
-        {
-          "type": "color_background",
-          "id": "gradient_bg",
-          "label": "Gradient Background"
-        },
         {
           "type": "select",
           "id": "banner_top_tag",
@@ -858,13 +814,13 @@
         {
           "type": "color",
           "id": "button-color",
-          "label": "Button Color"
+          "label": "Button Color",
         },
         {
-          "type": "text",
-          "id": "button_text",
-          "label": "Default Button Text",
-          "default": "Shop Now"
+        "type": "text",
+        "id": "button_text",
+        "label": "Default Button Text",
+        "default": "Shop Now"
         },
         {
           "type": "header",
@@ -915,16 +871,6 @@
       "name": "Video Media",
       "settings": [
         {
-          "type": "color_background",
-          "id": "gradient_bg",
-          "label": "Gradient Background"
-        },
-         {
-          "type": "image_picker",
-          "id": "birthday-sale",
-          "label": "Birthday logo"
-        },
-        {
           "type": "select",
           "id": "banner_top_tag",
           "label": "Banner Top Tag",
@@ -950,48 +896,6 @@
           "id": "banner_bottom_logo",
           "label": "Banner Bottom logo"
         },
-        {
-        "type": "header",
-        "content": "Timer section"
-        },
-        {
-          "type": "select",
-          "id": "timer_button_display",
-          "label": "Timer / Button display",
-          "default": "button",
-          "options": [
-            {
-              "value": "both",
-              "label": "Show both timer and button"
-            },
-            {
-              "value": "timer",
-              "label": "Show only timer"
-            },
-            {
-              "value": "button",
-              "label": "Show only button"
-            },
-            {
-              "value": "none",
-              "label": "Hide both"
-            }
-          ]
-        },
-        {
-  "type": "text",
-  "id": "deadline_date",
-  "label": "Countdown Date",
-  "default": "2026-07-10",
-  "info": "Format: YYYY-MM-DD"
-},
-{
-  "type": "text",
-  "id": "deadline_time",
-  "label": "Countdown Time",
-  "default": "23:59",
-  "info": "Format: HH:MM, example: 23:59"
-},
         {
           "type": "url",
           "id": "banner-url",
@@ -1034,14 +938,14 @@
         {
           "type": "color",
           "id": "button-color-v",
-          "label": "Button Color"
+          "label": "Button Color",
         },
         {
-          "type": "text",
-          "id": "button_text",
-          "label": "Default Button Text",
-          "default": "Shop Now"
-        },
+        "type": "text",
+        "id": "button_text",
+        "label": "Default Button Text",
+        "default": "Shop Now"
+      },
         {
           "type": "radio",
           "id": "text_style",
