@@ -396,7 +396,7 @@
       }
 {%- endstyle -%}
 <div class="section-{{ section.id }}-margin">
-  <div class="carousel-section-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="{% if section.settings.showContainer %}{{ section.settings.showContainer }}{% endif %} carousel-section-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     <div class="carousel-nav-wrapper">
       <div id="hero-banner-layout-{{ section.id }}" class="carousel-wrapper-outer overflow-hidden jjj">
         <div class="carousel-wrapper-inner swiper-wrapper">
