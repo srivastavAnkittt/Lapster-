@@ -711,7 +711,7 @@
         </div>
       </modal-dialog>
     {%- endfor -%}
-    {% render 'a-plus-images' %}
+    {% render 'a-plus-images', product: product %}
 
     {%- if product.media.size > 0 -%}
       <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
