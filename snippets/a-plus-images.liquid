@@ -1,0 +1,22 @@
+{% assign desktop_images = product.metafields.custom.desktop_images.value %}
+{% assign mobile_images = product.metafields.custom.mobile_images.value %}
+
+{% for desktop_image in desktop_images %}
+  {% assign mobile_image = mobile_images[forloop.index0] %}
+
+  <picture>
+    {% if mobile_image %}
+      <source
+        media="(max-width: 767px)"
+        srcset="{{ mobile_image | image_url: width: 767 }}">
+    {% endif %}
+
+    <img
+      src="{{ desktop_image | image_url: width: 2000 }}"
+      alt="{{ product.title | escape }}"
+      loading="lazy"
+      width="{{ desktop_image.width }}"
+      height="{{ desktop_image.height }}"
+      style="display:block;width:100%;height:auto;">
+  </picture>
+{% endfor %}
