@@ -1,0 +1,119 @@
+{% liquid
+  assign desktop_images = product.metafields.custom.desktop_images.value
+  assign mobile_images = product.metafields.custom.mobile_images.value
+%}
+
+<style>
+  .responsive-image-list-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  }
+
+  .responsive-image-list-{{ section.id }} img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .responsive-image-list-{{ section.id }} picture {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .responsive-image-list-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+</style>
+
+<section class="responsive-image-list-{{ section.id }}">
+  <div class="page-width">
+
+    {% if desktop_images != blank %}
+      {% for desktop_image in desktop_images %}
+        {% assign mobile_image = mobile_images[forloop.index0] %}
+
+        <picture>
+          {% if mobile_image %}
+            <source
+              media="(max-width: 749px)"
+              srcset="{{ mobile_image | image_url: width: 750 }}">
+          {% endif %}
+
+          <img
+            src="{{ desktop_image | image_url: width: 2000 }}"
+            srcset="
+              {{ desktop_image | image_url: width: 480 }} 480w,
+              {{ desktop_image | image_url: width: 768 }} 768w,
+              {{ desktop_image | image_url: width: 1200 }} 1200w,
+              {{ desktop_image | image_url: width: 1600 }} 1600w,
+              {{ desktop_image | image_url: width: 2000 }} 2000w
+            "
+            sizes="100vw"
+            width="{{ desktop_image.width }}"
+            height="{{ desktop_image.height }}"
+            alt="{{ product.title | escape }}"
+            loading="lazy">
+        </picture>
+
+      {% endfor %}
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "A Plus Image",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "A Plus Image"
+    }
+  ]
+}
+{% endschema %}
