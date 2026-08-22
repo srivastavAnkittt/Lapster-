@@ -94,7 +94,16 @@
           "settings": {
             "image": "shopify://shop_images/4_bb2dd70e-d296-454f-8c7b-2e27832cd8ff.png",
             "image_hover": "shopify://shop_images/Animation.webp",
-            "title": "Audio",
+            "title": "Car Accessories",
+            "link": ""
+          }
+        },
+        "category_LF8YhX": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/3_690f501a-f86f-4808-82a0-3f252c17e002.png",
+            "image_hover": "shopify://shop_images/PC.webp",
+            "title": "Computer Accessories",
             "link": ""
           }
         },
@@ -112,25 +121,16 @@
           "settings": {
             "image": "shopify://shop_images/1_91a4064d-345d-4b29-be92-5d770bec1174.png",
             "image_hover": "shopify://shop_images/Untitled_design.webp",
-            "title": "Car Accessories",
-            "link": ""
-          }
-        },
-        "category_LF8YhX": {
-          "type": "category",
-          "settings": {
-            "image": "shopify://shop_images/3_690f501a-f86f-4808-82a0-3f252c17e002.png",
-            "image_hover": "shopify://shop_images/PC.webp",
-            "title": "Computer Accessories",
+            "title": "Content",
             "link": ""
           }
         }
       },
       "block_order": [
         "category_xqFafG",
+        "category_LF8YhX",
         "category_yBnDwk",
-        "category_3JXK3Q",
-        "category_LF8YhX"
+        "category_3JXK3Q"
       ],
       "name": "Popular Categories",
       "settings": {
