@@ -105,6 +105,33 @@
       background: #f1f1f1;
     }
 
+    #PopularCategories-{{ section.id }} .popular-categories__image-primary,
+    #PopularCategories-{{ section.id }} .popular-categories__image-hover,
+    #PopularCategories-{{ section.id }} .popular-categories__placeholder {
+      position: absolute;
+      inset: 0;
+    }
+
+    #PopularCategories-{{ section.id }} .popular-categories__image-primary {
+      opacity: 1;
+      transition: opacity 0.35s ease;
+    }
+
+    #PopularCategories-{{ section.id }} .popular-categories__image-hover {
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    @media (hover: hover) {
+      #PopularCategories-{{ section.id }} .popular-categories__card:hover .popular-categories__image-primary {
+        opacity: 0;
+      }
+
+      #PopularCategories-{{ section.id }} .popular-categories__card:hover .popular-categories__image-hover {
+        opacity: 1;
+      }
+    }
+
     #PopularCategories-{{ section.id }} .popular-categories__grid--ratio-square .popular-categories__image {
       aspect-ratio: 1 / 1;
     }
@@ -195,10 +222,23 @@
                     loading: 'lazy',
                     widths: '200, 300, 400, 500, 600, 800',
                     sizes: '(max-width: 749px) 50vw, 25vw',
-                    alt: block.settings.title
+                    alt: block.settings.title,
+                    class: 'popular-categories__image-primary'
                 }}
               {%- else -%}
                 {{ 'collection-1' | placeholder_svg_tag: 'popular-categories__placeholder' }}
+              {%- endif -%}
+              {%- if block.settings.image_hover != blank -%}
+                {{
+                  block.settings.image_hover
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '200, 300, 400, 500, 600, 800',
+                    sizes: '(max-width: 749px) 50vw, 25vw',
+                    alt: '',
+                    class: 'popular-categories__image-hover'
+                }}
               {%- endif -%}
             </div>
             {%- if block.settings.title != blank -%}
@@ -519,6 +559,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "Category image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_hover",
+          "label": "Hover image (optional)",
+          "info": "Shown when a customer hovers the card. Accepts JPG, PNG, or GIF — GIFs animate automatically once visible."
         },
         {
           "type": "text",
