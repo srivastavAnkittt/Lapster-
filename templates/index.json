@@ -113,11 +113,88 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "popular_categories_ijCUPQ": {
+      "type": "popular-categories",
+      "blocks": {
+        "category_xqFafG": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/4_bb2dd70e-d296-454f-8c7b-2e27832cd8ff.png",
+            "image_hover": "shopify://shop_images/Animation.webp",
+            "title": "Audio",
+            "link": ""
+          }
+        },
+        "category_yBnDwk": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/Portronics_Car_Dashboard_Accessories_Online.png",
+            "image_hover": "shopify://shop_images/Portronics_Car_Bluetooth_Adapter_Online.webp",
+            "title": "Mobile Accessories",
+            "link": ""
+          }
+        },
+        "category_3JXK3Q": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/1_91a4064d-345d-4b29-be92-5d770bec1174.png",
+            "image_hover": "shopify://shop_images/Untitled_design.webp",
+            "title": "Car Accessories",
+            "link": ""
+          }
+        },
+        "category_LF8YhX": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/3_690f501a-f86f-4808-82a0-3f252c17e002.png",
+            "image_hover": "shopify://shop_images/PC.webp",
+            "title": "Computer Accessories",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_xqFafG",
+        "category_yBnDwk",
+        "category_3JXK3Q",
+        "category_LF8YhX"
+      ],
+      "name": "Popular Categories",
+      "settings": {
+        "heading": "Popular Categories",
+        "heading_size_desktop": 28,
+        "heading_size_mobile": 20,
+        "heading_weight": "700",
+        "heading_color": "#1a1a1a",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "gap_col_desktop": 24,
+        "gap_row_desktop": 32,
+        "gap_col_mobile": 16,
+        "gap_row_mobile": 24,
+        "image_ratio": "square",
+        "image_radius_desktop": 16,
+        "image_radius_mobile": 12,
+        "title_size_desktop": 16,
+        "title_size_mobile": 14,
+        "title_weight": "600",
+        "title_color": "#1a1a1a",
+        "title_align_desktop": "center",
+        "title_align_mobile": "left",
+        "title_gap": 12
+      }
     }
   },
   "order": [
     "image_banner",
     "hero_banner_carousel_GmwLnp",
-    "featured_collection"
+    "featured_collection",
+    "popular_categories_ijCUPQ"
   ]
 }
