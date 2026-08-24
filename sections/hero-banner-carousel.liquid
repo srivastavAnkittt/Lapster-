@@ -80,26 +80,29 @@
     position: relative;
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
     overflow: hidden;
   }
 
+  /* Important: let image/video intrinsic ratio create the slide height.
+     Using height:100% here with Swiper autoHeight can collapse lazy-loaded next slides. */
   #hero-carousel-section-{{ section.id }} .square-banner-media,
   #hero-carousel-section-{{ section.id }} .square-banner-slide img,
   #hero-carousel-section-{{ section.id }} .square-banner-slide video,
   #hero-carousel-section-{{ section.id }} .square-banner-slide picture {
     display: block;
     width: 100%;
+    max-width: 100%;
   }
 
   #hero-carousel-section-{{ section.id }} .square-banner-slide picture {
-    height: 100%;
+    height: auto;
   }
 
   #hero-carousel-section-{{ section.id }} .square-banner-media,
   #hero-carousel-section-{{ section.id }} .square-banner-slide img,
   #hero-carousel-section-{{ section.id }} .square-banner-slide video {
-    height: 100%;
+    height: auto;
     object-fit: cover;
   }
 
@@ -1025,10 +1028,6 @@
 
         if (!swiperInstance || swiperInstance.destroyed) return;
 
-        if (loopEnabled && typeof swiperInstance.loopFix === 'function') {
-          swiperInstance.loopFix();
-        }
-
         swiperInstance.slidePrev(transitionSpeed);
         restartAutoplay(swiperInstance);
       };
@@ -1038,10 +1037,6 @@
         event.stopPropagation();
 
         if (!swiperInstance || swiperInstance.destroyed) return;
-
-        if (loopEnabled && typeof swiperInstance.loopFix === 'function') {
-          swiperInstance.loopFix();
-        }
 
         swiperInstance.slideNext(transitionSpeed);
         restartAutoplay(swiperInstance);
@@ -1068,6 +1063,33 @@
 
       if (!bullets.length || !bullets[activeIndex]) return;
       bullets[activeIndex].style.setProperty('--bullet-progress', `${value}%`);
+    }
+
+    function prepareSlideMedia(swiper, index) {
+      if (!swiper || !swiper.slides || !swiper.slides.length) return;
+
+      const total = swiper.slides.length;
+      const normalizedIndex = ((index % total) + total) % total;
+      const slide = swiper.slides[normalizedIndex];
+      if (!slide) return;
+
+      slide.querySelectorAll('img').forEach((image) => {
+        if (image.loading === 'lazy') image.loading = 'eager';
+        if (typeof image.decode === 'function' && !image.complete) {
+          image.decode().catch(() => {});
+        }
+      });
+
+      slide.querySelectorAll('video').forEach((video) => {
+        video.preload = 'metadata';
+      });
+    }
+
+    function prepareAdjacentMedia(swiper) {
+      if (!swiper || !swiper.slides || !swiper.slides.length) return;
+      prepareSlideMedia(swiper, swiper.activeIndex);
+      prepareSlideMedia(swiper, swiper.activeIndex + 1);
+      prepareSlideMedia(swiper, swiper.activeIndex - 1);
     }
 
     function updateVideos(swiper) {
@@ -1178,7 +1200,8 @@
         allowTouchMove: slideCount > 1,
         simulateTouch: slideCount > 1,
         grabCursor: slideCount > 1,
-        loopPreventsSliding: false,
+        loopPreventsSliding: true,
+        waitForTransition: true,
         preventClicks: true,
         preventClicksPropagation: true,
         pagination: slideCount > 1 ? {
@@ -1194,6 +1217,7 @@
           init(swiper) {
             resetBullets(swiper);
             setActiveBulletProgress(swiper, autoplayEnabled ? 0 : 100);
+            prepareAdjacentMedia(swiper);
             updateVideos(swiper);
             bindMediaEvents(sliderElement, swiper);
             bindArrowNavigation(swiper);
@@ -1203,10 +1227,14 @@
           slideChange(swiper) {
             resetBullets(swiper);
             setActiveBulletProgress(swiper, autoplayEnabled ? 0 : 100);
+            prepareAdjacentMedia(swiper);
             syncArrowState(swiper);
+            updateAutoHeight(swiper, 0);
           },
           slideChangeTransitionEnd(swiper) {
+            prepareAdjacentMedia(swiper);
             updateVideos(swiper);
+            swiper.update();
             updateAutoHeight(swiper, transitionSpeed);
           },
           resize(swiper) {
