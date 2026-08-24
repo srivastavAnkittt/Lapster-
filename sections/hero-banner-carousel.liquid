@@ -929,7 +929,9 @@
     const autoplayEnabled = {{ section.settings.enable_autoplay | json }} && slideCount > 1;
     const shuffleEnabled = {{ section.settings.enableShuffle | json }} && slideCount > 1;
     const transitionSpeed = {{ section.settings.slide_speed | default: 500 | json }};
-    const autoplayDelay = ({{ section.settings.autoplay_delay | default: 16 | json }}) * 1000;
+    const autoplayDelay = Number(
+  {{ section.settings.autoplay_delay | default: '16000' | json }}
+);
 
     function getSliderElement() {
       return document.querySelector(sliderSelector);
