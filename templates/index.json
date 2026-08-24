@@ -27,6 +27,7 @@
             "button_style": "button-style-dark",
             "button-color": "",
             "button_text": "Shop Now",
+            "content_visibility": "d-flex",
             "cta_text": "<h3><strong>Lorem Ipsum</strong></h3>",
             "cta_subtext": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry.</p>",
             "cta_text_mobile": "<h3><strong>Lorem Ipsum</strong></h3>",
@@ -48,6 +49,7 @@
             "button_style": "button-style-dark",
             "button-color": "",
             "button_text": "Shop Now",
+            "content_visibility": "d-flex",
             "cta_text": "<h3><strong>Lorem Ipsum</strong></h3>",
             "cta_subtext": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry.</p>",
             "cta_text_mobile": "<h3><strong>Lorem Ipsum</strong></h3>",
@@ -69,6 +71,7 @@
             "button_style": "button-style-dark",
             "button-color": "",
             "button_text": "Shop Now",
+            "content_visibility": "d-flex",
             "cta_text": "<h3><strong>Lorem Ipsum</strong></h3>",
             "cta_subtext": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry.</p>",
             "cta_text_mobile": "<h3><strong>Lorem Ipsum</strong></h3>",
@@ -87,6 +90,8 @@
         "seo_text": "",
         "enableShuffle": false,
         "loop": true,
+        "enable_autoplay": true,
+        "autoplay_delay": "16000",
         "pagination_margin_top": 34,
         "slide_speed": 500
       }
