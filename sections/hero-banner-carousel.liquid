@@ -29,10 +29,15 @@
   }
 
   #hero-carousel-section-{{ section.id }} .swiper-wrapper {
+    display: flex;
     align-items: stretch;
+    width: 100%;
+    height: auto;
   }
 
   #hero-carousel-section-{{ section.id }} .swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
     height: auto;
     min-width: 0;
   }
@@ -104,6 +109,8 @@
   #hero-carousel-section-{{ section.id }} .square-banner-slide video {
     height: auto;
     object-fit: cover;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   #hero-carousel-section-{{ section.id }} .hero-video-desktop {
@@ -572,11 +579,10 @@
                 assign media_mobile = blank
               endif
 
+              assign loading_attr = 'eager'
               if forloop.first
-                assign loading_attr = 'eager'
                 assign fetch_priority = 'high'
               else
-                assign loading_attr = 'lazy'
                 assign fetch_priority = 'auto'
               endif
 
@@ -1114,7 +1120,14 @@
     }
 
     function updateAutoHeight(swiper, speed = 0) {
-      if (!swiper || swiper.destroyed || typeof swiper.updateAutoHeight !== 'function') return;
+      if (
+        !swiper ||
+        swiper.destroyed ||
+        !swiper.params ||
+        swiper.params.autoHeight !== true ||
+        typeof swiper.updateAutoHeight !== 'function'
+      ) return;
+
       requestAnimationFrame(() => swiper.updateAutoHeight(speed));
     }
 
@@ -1186,21 +1199,32 @@
 
       shuffleSlides(sliderElement);
 
+      // Hero slides must already have their media available before navigation.
+      // This prevents a lazy/loop duplicate from appearing as a blank slide.
+      sliderElement.querySelectorAll('img').forEach((image) => {
+        image.loading = 'eager';
+        if (typeof image.decode === 'function' && !image.complete) {
+          image.decode().catch(() => {});
+        }
+      });
+
+      sliderElement.querySelectorAll('video').forEach((video) => {
+        video.preload = 'auto';
+      });
+
       const options = {
         slidesPerView: 1,
         slidesPerGroup: 1,
         spaceBetween: 0,
         speed: transitionSpeed,
-        loop: loopEnabled,
-        autoHeight: true,
+        loop: false,
+        rewind: loopEnabled,
+        autoHeight: false,
         watchOverflow: true,
-        observer: true,
-        observeParents: true,
         resizeObserver: true,
         allowTouchMove: slideCount > 1,
         simulateTouch: slideCount > 1,
         grabCursor: slideCount > 1,
-        loopPreventsSliding: true,
         waitForTransition: true,
         preventClicks: true,
         preventClicksPropagation: true,
