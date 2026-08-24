@@ -221,34 +221,81 @@
     "colletion_tab_QTb48j": {
       "type": "colletion-tab",
       "blocks": {
+        "collection_tab_EQhtJi": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "Mousepad",
+            "collection": "mousepad-deskmat"
+          }
+        },
+        "collection_tab_P9hD37": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "Mix Match",
+            "collection": "mix-match"
+          }
+        },
+        "collection_tab_cAwRXk": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "Luma Series",
+            "collection": "luma-series"
+          }
+        },
+        "collection_tab_ntt6pB": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "Individual",
+            "collection": "individual"
+          }
+        },
+        "collection_tab_eVaCY9": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "HDMI Cable",
+            "collection": "hdmi-cable"
+          }
+        },
+        "collection_tab_LwiEaJ": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "Cooling Pad",
+            "collection": "cooling-pad"
+          }
+        },
         "collection_tab_JjXWBy": {
           "type": "collection_tab",
           "settings": {
-            "tab_title": "",
-            "collection": ""
+            "tab_title": "Apple Adaptor",
+            "collection": "apple-adaptors"
           }
         },
         "collection_tab_MyTdFi": {
           "type": "collection_tab",
           "settings": {
-            "tab_title": "",
-            "collection": ""
+            "tab_title": "Apple Keyguard",
+            "collection": "apple-keyguard"
           }
         },
         "collection_tab_xJtQah": {
           "type": "collection_tab",
           "settings": {
-            "tab_title": "",
-            "collection": ""
+            "tab_title": "Mobile Holder",
+            "collection": "car-mobile-holder"
           }
         }
       },
       "block_order": [
+        "collection_tab_EQhtJi",
+        "collection_tab_P9hD37",
+        "collection_tab_cAwRXk",
+        "collection_tab_ntt6pB",
+        "collection_tab_eVaCY9",
+        "collection_tab_LwiEaJ",
         "collection_tab_JjXWBy",
         "collection_tab_MyTdFi",
         "collection_tab_xJtQah"
       ],
-      "disabled": true,
       "name": "Collection tabs slider",
       "settings": {
         "heading": "COMPUTER ACCESSORIES",
