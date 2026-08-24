@@ -401,88 +401,6 @@
         "arrow_size": 38,
         "arrow_radius": 30
       }
-    },
-    "hero_banner_carousel_denpqh": {
-      "type": "hero-banner-carousel",
-      "blocks": {
-        "image_media_4C8KXt": {
-          "type": "image-media",
-          "settings": {
-            "gradient_bg": "",
-            "banner_top_tag": "none",
-            "full_width_image": true,
-            "banner-url": "",
-            "banner-image-desktop": "shopify://shop_images/banner_2.png",
-            "banner-image-mobile": "shopify://shop_images/banner_2.png",
-            "show_gradient": "none",
-            "gradient_condition": "gradient_on_all",
-            "text_style": "text-dark",
-            "button_style": "button-style-dark",
-            "button-color": "",
-            "button_text": "Shop Now",
-            "cta_text": "",
-            "cta_subtext": "",
-            "cta_text_mobile": "",
-            "cta_subtext_mobile": ""
-          }
-        },
-        "image_media_HLkjFy": {
-          "type": "image-media",
-          "settings": {
-            "gradient_bg": "",
-            "banner_top_tag": "none",
-            "full_width_image": true,
-            "banner-url": "",
-            "banner-image-desktop": "shopify://shop_images/banner_2.png",
-            "banner-image-mobile": "shopify://shop_images/banner_2.png",
-            "show_gradient": "none",
-            "gradient_condition": "gradient_on_all",
-            "text_style": "text-dark",
-            "button_style": "button-style-dark",
-            "button-color": "",
-            "button_text": "Shop Now",
-            "cta_text": "",
-            "cta_subtext": "",
-            "cta_text_mobile": "",
-            "cta_subtext_mobile": ""
-          }
-        },
-        "image_media_pYkxME": {
-          "type": "image-media",
-          "settings": {
-            "gradient_bg": "",
-            "banner_top_tag": "none",
-            "full_width_image": true,
-            "banner-url": "",
-            "banner-image-desktop": "shopify://shop_images/banner_2.png",
-            "banner-image-mobile": "shopify://shop_images/banner_2.png",
-            "show_gradient": "none",
-            "gradient_condition": "gradient_on_all",
-            "text_style": "text-dark",
-            "button_style": "button-style-dark",
-            "button-color": "",
-            "button_text": "Shop Now",
-            "cta_text": "",
-            "cta_subtext": "",
-            "cta_text_mobile": "",
-            "cta_subtext_mobile": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_media_4C8KXt",
-        "image_media_HLkjFy",
-        "image_media_pYkxME"
-      ],
-      "name": "Hero Carousel Layout",
-      "settings": {
-        "showContainer": "full-width",
-        "seo_text": "",
-        "enableShuffle": false,
-        "loop": true,
-        "pagination_margin_top": 34,
-        "slide_speed": 500
-      }
     }
   },
   "order": [
@@ -490,7 +408,6 @@
     "popular_categories_ijCUPQ",
     "featured_collection",
     "featured_collection_T4QxC6",
-    "colletion_tab_QTb48j",
-    "hero_banner_carousel_denpqh"
+    "colletion_tab_QTb48j"
   ]
 }
