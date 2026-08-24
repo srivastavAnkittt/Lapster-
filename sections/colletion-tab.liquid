@@ -1,16 +1,3 @@
-{%- comment -%}
-  ============================================================================
-  Section: Collection Tabs Slider
-  File:    sections/collection-tabs-slider.liquid
-
-  - Collection tabs are section blocks (tab title + collection picker)
-  - Products render through Liquid (no JS collection fetching)
-  - Horizontal scroll-snap slider, vanilla JS arrows, AJAX add to cart
-  - All CSS scoped to #shopify-section-{{ section.id }}
-  - Safe to place multiple times on the same page
-  ============================================================================
-{%- endcomment -%}
-
 {%- liquid
   assign s = section.settings
 
@@ -757,7 +744,7 @@
                         {%- endif -%}
                       {%- endfor -%}
 
-                      <div class="ct-card">
+                      {% comment %} <div class="ct-card">
                         <a
                           class="ct-media"
                           href="{{ product.url }}"
@@ -858,7 +845,7 @@
                             {%- endif -%}
                           </button>
                         </div>
-                      </div>
+                      </div> {% endcomment %}
                     {%- endfor -%}
                   </div>
 
