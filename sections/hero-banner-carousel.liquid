@@ -1217,12 +1217,8 @@
         slidesPerGroup: 1,
         spaceBetween: 0,
         speed: transitionSpeed,
-        // Real infinite loop: last slide continues smoothly into the first slide.
-        // Media is eager-loaded above, so loop slides do not render blank.
-        loop: loopEnabled && slideCount > 1,
-        rewind: false,
-        loopAdditionalSlides: 1,
-        loopPreventsSliding: true,
+        loop: false,
+        rewind: loopEnabled,
         autoHeight: false,
         watchOverflow: true,
         resizeObserver: true,
