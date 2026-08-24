@@ -19,6 +19,7 @@
   #hero-carousel-section-{{ section.id }} .carousel-nav-wrapper {
     position: relative;
     width: 100%;
+    overflow: hidden;
   }
 
   #hero-carousel-section-{{ section.id }} .hero-carousel-swiper {
@@ -89,6 +90,10 @@
   #hero-carousel-section-{{ section.id }} .square-banner-slide picture {
     display: block;
     width: 100%;
+  }
+
+  #hero-carousel-section-{{ section.id }} .square-banner-slide picture {
+    height: 100%;
   }
 
   #hero-carousel-section-{{ section.id }} .square-banner-media,
@@ -300,28 +305,40 @@
     z-index: 2;
   }
 
+  /* Navigation overlay: buttons are positioned independently so theme/global flex CSS cannot pull both arrows to the left. */
   #hero-carousel-section-{{ section.id }} .slider_arrows {
     position: absolute;
-    top: 50%;
-    left: 2rem;
-    z-index: 5;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: calc(100% - 4rem);
-    transform: translateY(-50%);
+    inset: 0;
+    z-index: 10;
+    display: block;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
   }
 
   #hero-carousel-section-{{ section.id }} .slider_arrows .carousel-btn {
+    position: absolute;
+    top: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 50px;
+    height: 50px;
     padding: 0;
     border: 0;
     background: transparent;
     cursor: pointer;
     pointer-events: auto;
+    transform: translateY(-50%);
+  }
+
+  #hero-carousel-section-{{ section.id }} #carousel-prev-{{ section.id }} {
+    left: 16px;
+  }
+
+  #hero-carousel-section-{{ section.id }} #carousel-next-{{ section.id }} {
+    right: 16px;
+    left: auto;
   }
 
   #hero-carousel-section-{{ section.id }} .slider_arrows .carousel-btn svg {
@@ -530,11 +547,11 @@
     <div class="carousel-nav-wrapper">
       <div
         id="hero-banner-layout-{{ section.id }}"
-        class="swiper hero-carousel-swiper"
+        class="swiper hero-carousel-swiper carousel-wrapper-outer overflow-hidden jjj"
         data-section-id="{{ section.id }}"
         data-slide-count="{{ section.blocks.size }}"
       >
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper carousel-wrapper-inner">
           {% for block in section.blocks %}
             {% liquid
               assign desktop_image = block.settings['banner-image-desktop']
