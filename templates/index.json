@@ -9,46 +9,6 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "disabled": true,
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
     "hero_banner_carousel_GmwLnp": {
       "type": "hero-banner-carousel",
       "blocks": {
@@ -71,10 +31,52 @@
             "cta_text_mobile": "<h3><strong>Lorem Ipsum</strong></h3>",
             "cta_subtext_mobile": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry.</p>"
           }
+        },
+        "image_media_L6Dnit": {
+          "type": "image-media",
+          "settings": {
+            "banner_top_tag": "none",
+            "full_width_image": true,
+            "banner-url": "",
+            "banner-image-desktop": "shopify://shop_images/banner_2.png",
+            "banner-image-mobile": "shopify://shop_images/banner_2.png",
+            "show_gradient": "none",
+            "gradient_condition": "gradient_on_all",
+            "text_style": "text-dark",
+            "button_style": "button-style-dark",
+            "button-color": "",
+            "button_text": "Shop Now",
+            "cta_text": "<h3><strong>Lorem Ipsum</strong></h3>",
+            "cta_subtext": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry.</p>",
+            "cta_text_mobile": "<h3><strong>Lorem Ipsum</strong></h3>",
+            "cta_subtext_mobile": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry.</p>"
+          }
+        },
+        "image_media_CWcx9K": {
+          "type": "image-media",
+          "settings": {
+            "banner_top_tag": "none",
+            "full_width_image": true,
+            "banner-url": "",
+            "banner-image-desktop": "shopify://shop_images/Content_creation_banner.png",
+            "banner-image-mobile": "shopify://shop_images/Content_creation_banner.png",
+            "show_gradient": "none",
+            "gradient_condition": "gradient_on_all",
+            "text_style": "text-dark",
+            "button_style": "button-style-dark",
+            "button-color": "",
+            "button_text": "Shop Now",
+            "cta_text": "<h3><strong>Lorem Ipsum</strong></h3>",
+            "cta_subtext": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry.</p>",
+            "cta_text_mobile": "<h3><strong>Lorem Ipsum</strong></h3>",
+            "cta_subtext_mobile": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry.</p>"
+          }
         }
       },
       "block_order": [
-        "image_media_Egr99h"
+        "image_media_Egr99h",
+        "image_media_L6Dnit",
+        "image_media_CWcx9K"
       ],
       "name": "Hero Carousel Layout",
       "settings": {
@@ -399,7 +401,6 @@
     }
   },
   "order": [
-    "image_banner",
     "hero_banner_carousel_GmwLnp",
     "popular_categories_ijCUPQ",
     "featured_collection",
