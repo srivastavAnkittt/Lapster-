@@ -89,7 +89,7 @@
         "showContainer": "full-width",
         "seo_text": "",
         "enableShuffle": false,
-        "loop": true,
+        "loop": false,
         "enable_autoplay": true,
         "autoplay_delay": "16000",
         "pagination_margin_top": 34,
