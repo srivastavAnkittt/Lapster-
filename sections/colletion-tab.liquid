@@ -471,10 +471,6 @@
                   <ul class="collection-tabs__slider" role="list" data-ct-slider>
                     {%- for product in collection.products limit: s.products_to_show -%}
                       {%- assign current_variant = product.selected_or_first_available_variant -%}
-                      {%- capture product_form_id -%}
-                        collection-tab-product-form-{{ section.id }}-{{ block.id }}-{{ product.id }}
-                      {%- endcapture -%}
-                      {%- assign product_form_id = product_form_id | strip -%}
 
                       <li class="collection-tabs-product">
                         {% render 'card-product',
@@ -490,11 +486,17 @@
                         %}
 
                         <div class="collection-tabs-product__atc">
+                          {% comment %}
+                            custom-atc builds its own product_form_id from section_id + card_product.id,
+                            and renders nothing unless quick_add is passed.
+                          {% endcomment %}
                           {% render 'custom-atc',
                             card_product: product,
+                            product: product,
+                            quick_add: s.quick_add_type,
+                            horizontal_quick_add: s.horizontal_quick_add,
                             variant: current_variant,
                             current_variant: current_variant,
-                            product_form_id: product_form_id,
                             section_id: section.id,
                             block_id: block.id
                           %}
@@ -1176,6 +1178,24 @@
     },
 
     { "type": "header", "content": "Add to cart", "info": "Add to cart is rendered by the custom-atc snippet." },
+    {
+      "type": "select",
+      "id": "quick_add_type",
+      "label": "Add to cart type",
+      "info": "Passed to custom-atc. It renders nothing when set to None.",
+      "options": [
+        { "value": "standard", "label": "Standard" },
+        { "value": "bulk", "label": "Bulk" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "standard"
+    },
+    {
+      "type": "checkbox",
+      "id": "horizontal_quick_add",
+      "label": "Horizontal Add to cart layout",
+      "default": false
+    },
     {
       "type": "range",
       "id": "atc_spacing",
