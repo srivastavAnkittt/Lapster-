@@ -217,6 +217,138 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "colletion_tab_QTb48j": {
+      "type": "colletion-tab",
+      "blocks": {
+        "collection_tab_JjXWBy": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "",
+            "collection": ""
+          }
+        },
+        "collection_tab_MyTdFi": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "",
+            "collection": ""
+          }
+        },
+        "collection_tab_xJtQah": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "",
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_JjXWBy",
+        "collection_tab_MyTdFi",
+        "collection_tab_xJtQah"
+      ],
+      "disabled": true,
+      "name": "Collection tabs slider",
+      "settings": {
+        "heading": "COMPUTER ACCESSORIES",
+        "view_all_text": "VIEW ALL",
+        "products_to_show": 8,
+        "empty_text": "No products available.",
+        "section_background": "#f7f8fa",
+        "per_view_desktop": 4,
+        "per_view_tablet": 2.5,
+        "per_view_mobile": 1,
+        "gap_desktop": 16,
+        "gap_mobile": 12,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "heading_size": 26,
+        "heading_size_mobile": 17,
+        "heading_weight": "800",
+        "heading_letter_spacing": 0.6,
+        "heading_color": "#121212",
+        "view_all_size": 14,
+        "view_all_weight": "700",
+        "view_all_color": "#e5121e",
+        "tab_size": 15,
+        "tab_size_mobile": 13,
+        "tab_weight": "500",
+        "tab_color": "#8a8f98",
+        "tab_color_active": "#121212",
+        "tab_background": "rgba(0,0,0,0)",
+        "tab_background_active": "#eceef2",
+        "tab_radius": 20,
+        "tab_padding_x": 12,
+        "tab_padding_y": 8,
+        "tab_gap": 18,
+        "tab_gap_mobile": 8,
+        "card_background": "#ffffff",
+        "card_border_color": "#e6e7ea",
+        "card_border_width": 1,
+        "card_radius": 6,
+        "card_padding": 12,
+        "image_ratio": "square",
+        "title_size": 15,
+        "title_size_mobile": 14,
+        "title_weight": "700",
+        "title_color": "#121212",
+        "title_lines": 1,
+        "title_uppercase": true,
+        "subtitle_namespace": "custom",
+        "subtitle_key": "short_description",
+        "subtitle_size": 13,
+        "subtitle_color": "#8a8f98",
+        "badge_namespace": "custom",
+        "badge_key": "badge_text",
+        "badge_background": "#e5121e",
+        "badge_text_color": "#ffffff",
+        "badge_font_size": 11,
+        "badge_radius": 20,
+        "price_size": 22,
+        "price_size_mobile": 18,
+        "price_weight": "700",
+        "price_color": "#121212",
+        "compare_price_color": "#9aa0a6",
+        "discount_background": "#ffffff",
+        "discount_text_color": "#e5121e",
+        "discount_border_color": "#e5121e",
+        "discount_radius": 20,
+        "discount_font_size": 12,
+        "show_swatches": true,
+        "max_swatches": 3,
+        "swatch_size": 14,
+        "show_emi": true,
+        "emi_namespace": "custom",
+        "emi_key": "emi_text",
+        "emi_text": "Pay ₹1 now, rest in 3 EMI",
+        "emi_link_text": "Buy on EMI",
+        "emi_link_url": "",
+        "emi_font_size": 11,
+        "emi_text_color": "#4a4f57",
+        "emi_link_color": "#1a73e8",
+        "button_text": "Add to cart",
+        "sold_out_text": "Sold out",
+        "button_adding_text": "Adding...",
+        "button_added_text": "Added",
+        "button_error_text": "Try again",
+        "button_background": "#1f1f1f",
+        "button_text_color": "#ffffff",
+        "button_background_hover": "#000000",
+        "button_font_size": 14,
+        "button_weight": "700",
+        "button_radius": 4,
+        "button_height": 46,
+        "cart_count_fallback": true,
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "arrow_background": "#ffffff",
+        "arrow_color": "#121212",
+        "arrow_size": 38,
+        "arrow_radius": 30
+      }
     }
   },
   "order": [
@@ -224,6 +356,7 @@
     "hero_banner_carousel_GmwLnp",
     "popular_categories_ijCUPQ",
     "featured_collection",
-    "featured_collection_T4QxC6"
+    "featured_collection_T4QxC6",
+    "colletion_tab_QTb48j"
   ]
 }
