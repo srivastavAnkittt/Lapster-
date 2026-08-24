@@ -327,7 +327,7 @@
   #hero-carousel-section-{{ section.id }} .slider_arrows .carousel-btn svg {
     width: 50px;
     height: 50px;
-    opacity: 0;
+    opacity: 1;
     transition: opacity .3s ease, transform .3s ease;
   }
 
@@ -923,18 +923,116 @@
     const paginationSelector = '#hero-pagination-wrapper-{{ section.id }}';
     const prevSelector = '#carousel-prev-{{ section.id }}';
     const nextSelector = '#carousel-next-{{ section.id }}';
+    let prevButton = null;
+    let nextButton = null;
+    let prevClickHandler = null;
+    let nextClickHandler = null;
 
     const slideCount = {{ section.blocks.size | json }};
     const loopEnabled = {{ section.settings.loop | json }} && slideCount > 1;
     const autoplayEnabled = {{ section.settings.enable_autoplay | json }} && slideCount > 1;
     const shuffleEnabled = {{ section.settings.enableShuffle | json }} && slideCount > 1;
     const transitionSpeed = {{ section.settings.slide_speed | default: 500 | json }};
-    const autoplayDelay = Number(
-  {{ section.settings.autoplay_delay | default: '16000' | json }}
-);
+    const autoplayDelay = Number({{ section.settings.autoplay_delay | default: '16000' | json }});
 
     function getSliderElement() {
       return document.querySelector(sliderSelector);
+    }
+
+
+    function restartAutoplay(swiper) {
+      if (!autoplayEnabled || !swiper || swiper.destroyed || !swiper.autoplay) return;
+
+      if (typeof swiper.autoplay.start === 'function') {
+        swiper.autoplay.stop();
+        swiper.autoplay.start();
+      }
+    }
+
+    function syncArrowState(swiper) {
+      if (!prevButton || !nextButton) return;
+
+      if (loopEnabled) {
+        prevButton.classList.remove('disabled_swiper_button');
+        nextButton.classList.remove('disabled_swiper_button');
+        prevButton.disabled = false;
+        nextButton.disabled = false;
+        prevButton.setAttribute('aria-disabled', 'false');
+        nextButton.setAttribute('aria-disabled', 'false');
+        return;
+      }
+
+      const atBeginning = !!(swiper && swiper.isBeginning);
+      const atEnd = !!(swiper && swiper.isEnd);
+
+      prevButton.classList.toggle('disabled_swiper_button', atBeginning);
+      nextButton.classList.toggle('disabled_swiper_button', atEnd);
+      prevButton.disabled = atBeginning;
+      nextButton.disabled = atEnd;
+      prevButton.setAttribute('aria-disabled', atBeginning ? 'true' : 'false');
+      nextButton.setAttribute('aria-disabled', atEnd ? 'true' : 'false');
+    }
+
+    function unbindArrowNavigation() {
+      if (prevButton && prevClickHandler) {
+        prevButton.removeEventListener('click', prevClickHandler);
+      }
+
+      if (nextButton && nextClickHandler) {
+        nextButton.removeEventListener('click', nextClickHandler);
+      }
+
+      prevButton = null;
+      nextButton = null;
+      prevClickHandler = null;
+      nextClickHandler = null;
+    }
+
+    function bindArrowNavigation(swiper) {
+      unbindArrowNavigation();
+
+      const sectionElement = document.getElementById('hero-carousel-section-{{ section.id }}');
+      if (!sectionElement || !swiper || swiper.destroyed || slideCount <= 1) return;
+
+      prevButton = sectionElement.querySelector(prevSelector);
+      nextButton = sectionElement.querySelector(nextSelector);
+
+      if (!prevButton || !nextButton) {
+        console.warn(`Hero Carousel ${sectionId}: navigation buttons not found.`);
+        return;
+      }
+
+      prevClickHandler = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (!swiperInstance || swiperInstance.destroyed) return;
+
+        if (loopEnabled && typeof swiperInstance.loopFix === 'function') {
+          swiperInstance.loopFix();
+        }
+
+        swiperInstance.slidePrev(transitionSpeed);
+        restartAutoplay(swiperInstance);
+      };
+
+      nextClickHandler = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (!swiperInstance || swiperInstance.destroyed) return;
+
+        if (loopEnabled && typeof swiperInstance.loopFix === 'function') {
+          swiperInstance.loopFix();
+        }
+
+        swiperInstance.slideNext(transitionSpeed);
+        restartAutoplay(swiperInstance);
+      };
+
+      prevButton.addEventListener('click', prevClickHandler);
+      nextButton.addEventListener('click', nextClickHandler);
+      syncArrowState(swiper);
     }
 
     function resetBullets(swiper) {
@@ -1015,6 +1113,7 @@
       retryCount = 0;
 
       const sliderElement = getSliderElement();
+      unbindArrowNavigation();
 
       if (swiperInstance && !swiperInstance.destroyed) {
         swiperInstance.destroy(true, true);
@@ -1062,13 +1161,9 @@
         allowTouchMove: slideCount > 1,
         simulateTouch: slideCount > 1,
         grabCursor: slideCount > 1,
+        loopPreventsSliding: false,
         preventClicks: true,
         preventClicksPropagation: true,
-        navigation: slideCount > 1 ? {
-          prevEl: prevSelector,
-          nextEl: nextSelector,
-          disabledClass: 'disabled_swiper_button'
-        } : false,
         pagination: slideCount > 1 ? {
           el: paginationSelector,
           clickable: true
@@ -1084,11 +1179,14 @@
             setActiveBulletProgress(swiper, autoplayEnabled ? 0 : 100);
             updateVideos(swiper);
             bindMediaEvents(sliderElement, swiper);
+            bindArrowNavigation(swiper);
+            syncArrowState(swiper);
             updateAutoHeight(swiper, 0);
           },
           slideChange(swiper) {
             resetBullets(swiper);
             setActiveBulletProgress(swiper, autoplayEnabled ? 0 : 100);
+            syncArrowState(swiper);
           },
           slideChangeTransitionEnd(swiper) {
             updateVideos(swiper);
@@ -1096,6 +1194,7 @@
           },
           resize(swiper) {
             updateVideos(swiper);
+            syncArrowState(swiper);
             updateAutoHeight(swiper, 0);
           },
           autoplayTimeLeft(swiper, time, progress) {
@@ -1106,6 +1205,8 @@
       };
 
       swiperInstance = new window.Swiper(sliderElement, options);
+      bindArrowNavigation(swiperInstance);
+      syncArrowState(swiperInstance);
     }
 
     function handleSectionLoad(event) {
@@ -1206,19 +1307,19 @@
       "default": true
     },
     {
-  "type": "select",
-  "id": "autoplay_delay",
-  "label": "Autoplay Delay",
-  "options": [
-    { "value": "3000", "label": "3 seconds" },
-    { "value": "5000", "label": "5 seconds" },
-    { "value": "8000", "label": "8 seconds" },
-    { "value": "12000", "label": "12 seconds" },
-    { "value": "16000", "label": "16 seconds" },
-    { "value": "20000", "label": "20 seconds" }
-  ],
-  "default": "16000"
-},
+      "type": "select",
+      "id": "autoplay_delay",
+      "label": "Autoplay Delay",
+      "options": [
+        { "value": "3000", "label": "3 seconds" },
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "12000", "label": "12 seconds" },
+        { "value": "16000", "label": "16 seconds" },
+        { "value": "20000", "label": "20 seconds" }
+      ],
+      "default": "16000"
+    },
     {
       "type": "range",
       "id": "pagination_margin_top",
