@@ -421,6 +421,7 @@
       "name": "Video + product slider",
       "settings": {
         "show_heading": true,
+        "show_image": false,
         "heading": "See it in action",
         "heading_size": 28,
         "heading_size_mobile": 20,
