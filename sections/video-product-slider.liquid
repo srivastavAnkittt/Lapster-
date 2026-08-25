@@ -1,0 +1,1274 @@
+{%- liquid
+  assign s = section.settings
+  assign sc = '#VideoProducts-' | append: section.id
+
+  case s.video_ratio
+    when 'square'
+      assign video_ratio_css = '1 / 1'
+    when 'landscape'
+      assign video_ratio_css = '4 / 3'
+    else
+      assign video_ratio_css = '3 / 4'
+  endcase
+
+  # Count blocks that can actually render something
+  assign renderable = 0
+  for block in section.blocks
+    if block.settings.video != blank or block.settings.video_mobile != blank or block.settings.product != blank or block.settings.video_poster != blank
+      assign renderable = renderable | plus: 1
+    endif
+  endfor
+-%}
+
+{% style %}
+  {{ sc }} {
+    --vp-bg: {{ s.section_background }};
+
+    --vp-heading-size: {{ s.heading_size_mobile }}px;
+    --vp-heading-weight: {{ s.heading_weight }};
+    --vp-heading-color: {{ s.heading_color }};
+    --vp-heading-align: {{ s.heading_alignment }};
+    --vp-heading-spacing: {{ s.heading_spacing_mobile }}px;
+
+    --vp-video-ratio: {{ video_ratio_css }};
+    --vp-video-radius: {{ s.video_radius_mobile }}px;
+
+    --vp-card-bg: {{ s.card_background }};
+    --vp-card-border-color: {{ s.card_border_color }};
+    --vp-card-border-width: {{ s.card_border_width }}px;
+    --vp-card-radius: {{ s.card_radius }}px;
+
+    --vp-pad: {{ s.content_padding_mobile }}px;
+    --vp-video-gap: {{ s.video_gap_mobile }}px;
+    --vp-atc-gap: {{ s.atc_spacing_mobile }}px;
+
+    --vp-arrow-bg: {{ s.arrow_background }};
+    --vp-arrow-color: {{ s.arrow_color }};
+    --vp-arrow-size: {{ s.arrow_size_mobile }}px;
+    --vp-arrow-radius: {{ s.arrow_radius }}px;
+    --vp-arrow-prev: {{ s.arrow_offset_prev }}px;
+    --vp-arrow-next: {{ s.arrow_offset_next }}px;
+
+    --vp-gap: {{ s.gap_mobile }}px;
+
+    display: block;
+    background-color: var(--vp-bg);
+    padding-top: {{ s.padding_top_mobile }}px;
+    padding-bottom: {{ s.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    {{ sc }} {
+      --vp-heading-size: {{ s.heading_size }}px;
+      --vp-heading-spacing: {{ s.heading_spacing }}px;
+      --vp-video-radius: {{ s.video_radius }}px;
+      --vp-pad: {{ s.content_padding }}px;
+      --vp-video-gap: {{ s.video_gap }}px;
+      --vp-atc-gap: {{ s.atc_spacing }}px;
+      --vp-arrow-size: {{ s.arrow_size }}px;
+      --vp-gap: {{ s.gap_tablet }}px;
+
+      padding-top: {{ s.padding_top }}px;
+      padding-bottom: {{ s.padding_bottom }}px;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    {{ sc }} {
+      --vp-gap: {{ s.gap_desktop }}px;
+    }
+  }
+
+  {{ sc }} .video-products__heading {
+    margin: 0 0 var(--vp-heading-spacing);
+    font-size: var(--vp-heading-size);
+    font-weight: var(--vp-heading-weight);
+    line-height: 1.2;
+    color: var(--vp-heading-color);
+    text-align: var(--vp-heading-align);
+  }
+
+  {{ sc }} .video-products__slider {
+    position: relative;
+    visibility: visible;
+  }
+
+  {{ sc }} .splide__track {
+    overflow: hidden;
+  }
+
+  {{ sc }} .splide__list {
+    align-items: stretch;
+  }
+
+  {{ sc }} .splide__slide {
+    height: auto;
+  }
+
+  /* ---------------- Slide card (outer wrapper only) ---------------- */
+  {{ sc }} .video-product-slide {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--vp-card-bg);
+    border: var(--vp-card-border-width) solid var(--vp-card-border-color);
+    border-radius: var(--vp-card-radius);
+    {%- if s.card_overflow %}
+    overflow: hidden;
+    {%- endif %}
+  }
+
+  {{ sc }} .video-product-slide__video {
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  {{ sc }} .video-product-slide__video-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  {{ sc }} .video-product-slide__media {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--vp-video-ratio);
+    overflow: hidden;
+    border-radius: var(--vp-video-radius);
+    background-color: #f1f1f1;
+  }
+
+  {{ sc }} .video-product-slide__media video,
+  {{ sc }} .video-product-slide__media img,
+  {{ sc }} .video-product-slide__media .video-product-slide__video-element {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  {{ sc }} .video-product-slide__media--mobile {
+    display: block;
+  }
+
+  {{ sc }} .video-product-slide__media--desktop {
+    display: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    {{ sc }} .video-product-slide__media--mobile {
+      display: none;
+    }
+
+    {{ sc }} .video-product-slide__media--desktop {
+      display: block;
+    }
+  }
+
+  {{ sc }} .video-product-slide__product {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: var(--vp-video-gap) var(--vp-pad) 0;
+  }
+
+  {{ sc }} .video-product-slide__atc {
+    flex: 0 0 auto;
+    margin-top: auto;
+    padding: var(--vp-atc-gap) var(--vp-pad) var(--vp-pad);
+  }
+
+  {{ sc }} .video-product-slide__placeholder {
+    padding: 16px var(--vp-pad);
+    font-size: 1.3rem;
+    line-height: 1.4;
+    opacity: 0.7;
+  }
+
+  /* Keep drag from triggering the optional video link */
+  {{ sc }} .splide.is-dragging .video-product-slide__video-link {
+    pointer-events: none;
+  }
+
+  /* ---------------- Arrows ---------------- */
+  {{ sc }} .splide__arrow {
+    top: var(--vp-arrow-top, 38%);
+    width: var(--vp-arrow-size);
+    height: var(--vp-arrow-size);
+    opacity: 1;
+    background-color: var(--vp-arrow-bg);
+    border: 0;
+    border-radius: var(--vp-arrow-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.15s ease;
+  }
+
+  {{ sc }} .splide__arrow svg {
+    width: 38%;
+    height: 38%;
+    fill: var(--vp-arrow-color);
+    color: var(--vp-arrow-color);
+    transform: none;
+  }
+
+  {{ sc }} .splide__arrow:disabled {
+    opacity: 0.3;
+  }
+
+  {{ sc }} .splide__arrow--prev {
+    left: var(--vp-arrow-prev);
+  }
+
+  {{ sc }} .splide__arrow--next {
+    right: var(--vp-arrow-next);
+  }
+
+  {%- unless s.show_arrows_mobile %}
+  @media screen and (max-width: 749px) {
+    {{ sc }} .splide__arrows {
+      display: none;
+    }
+  }
+  {%- endunless %}
+
+  {%- unless s.show_arrows_tablet %}
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    {{ sc }} .splide__arrows {
+      display: none;
+    }
+  }
+  {%- endunless %}
+
+  {%- unless s.show_arrows_desktop %}
+  @media screen and (min-width: 990px) {
+    {{ sc }} .splide__arrows {
+      display: none;
+    }
+  }
+  {%- endunless %}
+
+  /* ---------------- Fallback if Splide is unavailable ---------------- */
+  {{ sc }} .video-products__slider.vp-no-splide .splide__list {
+    display: flex;
+    gap: var(--vp-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  {{ sc }} .video-products__slider.vp-no-splide .splide__slide {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
+
+  {{ sc }} .video-products__slider.vp-no-splide .splide__arrows {
+    display: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    {{ sc }} .video-products__slider.vp-no-splide .splide__slide {
+      flex: 0 0 calc((100% - (({{ s.per_view_tablet }} - 1) * var(--vp-gap))) / {{ s.per_view_tablet }});
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    {{ sc }} .video-products__slider.vp-no-splide .splide__slide {
+      flex: 0 0 calc((100% - (({{ s.per_view_desktop }} - 1) * var(--vp-gap))) / {{ s.per_view_desktop }});
+    }
+  }
+{% endstyle %}
+
+<video-product-slider id="VideoProducts-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="page-width">
+    {%- if renderable == 0 -%}
+      {%- if request.design_mode -%}
+        <p class="video-product-slide__placeholder">
+          Add a “Video + Product” block, then choose a video and a product to show it here.
+        </p>
+      {%- endif -%}
+    {%- else -%}
+      {%- if s.show_heading and s.heading != blank -%}
+        <h2 class="video-products__heading">{{ s.heading | escape }}</h2>
+      {%- endif -%}
+
+      <div
+        id="VideoProductSlider-{{ section.id }}"
+        class="splide video-products__slider"
+        aria-label="{{ s.heading | default: 'Product videos' | escape }}"
+      >
+        <div class="splide__track">
+          <ul class="splide__list">
+            {%- assign slide_index = 0 -%}
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign product = block.settings.product
+                assign video_desktop = block.settings.video
+                assign video_mobile = block.settings.video_mobile
+                assign poster = block.settings.video_poster
+
+                assign has_media = false
+                if video_desktop != blank or video_mobile != blank or poster != blank
+                  assign has_media = true
+                endif
+
+                assign show_both = false
+                if video_desktop != blank and video_mobile != blank
+                  assign show_both = true
+                endif
+
+                assign single_video = video_desktop
+                if single_video == blank
+                  assign single_video = video_mobile
+                endif
+              -%}
+
+              {%- if has_media == false and product == blank -%}
+                {%- continue -%}
+              {%- endif -%}
+
+              {%- assign current_variant = product.selected_or_first_available_variant -%}
+              {%- capture product_form_id -%}
+                video-product-form-{{ section.id }}-{{ block.id }}-{{ product.id }}
+              {%- endcapture -%}
+              {%- assign product_form_id = product_form_id | strip -%}
+
+              <li
+                class="splide__slide"
+                data-block-id="{{ block.id }}"
+                data-slide-index="{{ slide_index }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="video-product-slide">
+                  {%- if has_media -%}
+                    <div class="video-product-slide__video">
+                      {%- capture media_markup -%}
+                        {%- if show_both -%}
+                          <div
+                            class="video-product-slide__media video-product-slide__media--desktop"
+                            data-vp-media
+                            {% if poster != blank %}data-vp-poster="{{ poster | image_url: width: 900 }}"{% endif %}
+                          >
+                            {{
+                              video_desktop
+                              | video_tag:
+                                image_size: '900x',
+                                autoplay: false,
+                                loop: true,
+                                muted: true,
+                                controls: false,
+                                playsinline: true,
+                                class: 'video-product-slide__video-element'
+                            }}
+                          </div>
+                          <div
+                            class="video-product-slide__media video-product-slide__media--mobile"
+                            data-vp-media
+                            {% if poster != blank %}data-vp-poster="{{ poster | image_url: width: 700 }}"{% endif %}
+                          >
+                            {{
+                              video_mobile
+                              | video_tag:
+                                image_size: '700x',
+                                autoplay: false,
+                                loop: true,
+                                muted: true,
+                                controls: false,
+                                playsinline: true,
+                                class: 'video-product-slide__video-element'
+                            }}
+                          </div>
+                        {%- elsif single_video != blank -%}
+                          <div
+                            class="video-product-slide__media"
+                            data-vp-media
+                            {% if poster != blank %}data-vp-poster="{{ poster | image_url: width: 900 }}"{% endif %}
+                          >
+                            {{
+                              single_video
+                              | video_tag:
+                                image_size: '900x',
+                                autoplay: false,
+                                loop: true,
+                                muted: true,
+                                controls: false,
+                                playsinline: true,
+                                class: 'video-product-slide__video-element'
+                            }}
+                          </div>
+                        {%- else -%}
+                          <div class="video-product-slide__media" data-vp-media>
+                            {{
+                              poster
+                              | image_url: width: 900
+                              | image_tag:
+                                loading: 'lazy',
+                                sizes: '(min-width: 990px) 25vw, (min-width: 750px) 45vw, 85vw',
+                                widths: '300, 500, 700, 900',
+                                alt: poster.alt
+                            }}
+                          </div>
+                        {%- endif -%}
+                      {%- endcapture -%}
+
+                      {%- if s.enable_video_link and product != blank -%}
+                        <a
+                          class="video-product-slide__video-link"
+                          href="{{ product.url }}"
+                          tabindex="-1"
+                          aria-hidden="true"
+                        >
+                          {{ media_markup }}
+                        </a>
+                      {%- else -%}
+                        {{ media_markup }}
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+
+                  {%- if product != blank -%}
+                    <div class="video-product-slide__product">
+                      {% render 'card-product',
+                        card_product: product,
+                        media_aspect_ratio: s.image_ratio,
+                        image_shape: 'default',
+                        show_secondary_image: s.show_secondary_image,
+                        show_vendor: s.show_vendor,
+                        show_rating: s.show_rating,
+                        lazy_load: true,
+                        skip_styles: false,
+                        quick_add: 'none',
+                        section_id: section.id
+                      %}
+                    </div>
+
+                    <div class="video-product-slide__atc">
+                      {% comment %}
+                        custom-atc renders nothing unless quick_add is passed, and it
+                        rebuilds product_form_id from section_id + card_product.id.
+                      {% endcomment %}
+                      {% render 'custom-atc',
+                        product: product,
+                        card_product: product,
+                        quick_add: s.quick_add_type,
+                        horizontal_quick_add: s.horizontal_quick_add,
+                        variant: current_variant,
+                        current_variant: current_variant,
+                        product_form_id: product_form_id,
+                        section_id: section.id,
+                        block_id: block.id
+                      %}
+                    </div>
+                  {%- elsif request.design_mode -%}
+                    <p class="video-product-slide__placeholder">
+                      Choose a product for this block to show its product card and Add to cart.
+                    </p>
+                  {%- endif -%}
+                </div>
+              </li>
+
+              {%- assign slide_index = slide_index | plus: 1 -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        <div class="splide__arrows">
+          <button
+            type="button"
+            class="splide__arrow splide__arrow--prev"
+            aria-label="Previous slide"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="M15 4 7 12l8 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="splide__arrow splide__arrow--next"
+            aria-label="Next slide"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</video-product-slider>
+
+<script>
+  (function () {
+    if (customElements.get('video-product-slider')) return;
+
+    customElements.define(
+      'video-product-slider',
+      class VideoProductSlider extends HTMLElement {
+        constructor() {
+          super();
+          this.init = this.init.bind(this);
+          this.handleBlockSelect = this.handleBlockSelect.bind(this);
+          this.updateVideos = this.updateVideos.bind(this);
+          this.measureArrows = this.measureArrows.bind(this);
+          this.inViewport = true;
+        }
+
+        connectedCallback() {
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', this.init, { once: true });
+          } else {
+            /* Children are guaranteed to be parsed on the next frame */
+            window.requestAnimationFrame(this.init);
+          }
+        }
+
+        disconnectedCallback() {
+          document.removeEventListener('shopify:block:select', this.handleBlockSelect);
+          window.removeEventListener('resize', this.measureArrows);
+          if (this.slideObserver) this.slideObserver.disconnect();
+          if (this.sectionObserver) this.sectionObserver.disconnect();
+          if (this.resizeObserver) this.resizeObserver.disconnect();
+          if (this.videos) {
+            this.videos.forEach(function (video) {
+              try { video.pause(); } catch (error) { /* noop */ }
+            });
+          }
+          if (this.splide) {
+            this.splide.destroy(true);
+            this.splide = null;
+            this._videoProductSlider = null;
+          }
+        }
+
+        init() {
+          this.slider = this.querySelector('.splide');
+          if (!this.slider || this.splide) return;
+
+          this.track = this.querySelector('.splide__track');
+          this.reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+          this.setupVideos();
+          document.addEventListener('shopify:block:select', this.handleBlockSelect);
+
+          if (typeof window.Splide === 'undefined') {
+            /* Splide is loaded globally by the theme. If it is missing the slider
+               degrades to a native scroll row instead of breaking the page. */
+            this.slider.classList.add('vp-no-splide');
+            if (window.console) console.warn('[video-product-slider] Splide was not found on the page.');
+            return;
+          }
+
+          this.splide = new window.Splide(this.slider, this.options()).mount();
+          this._videoProductSlider = this.splide;
+
+          this.splide.on('mounted resized moved', this.measureArrows);
+          this.splide.on('moved', this.updateVideos);
+          window.addEventListener('resize', this.measureArrows);
+          this.measureArrows();
+        }
+
+        options() {
+          var autoplay = {{ s.enable_autoplay | json }} && !this.reduceMotion;
+
+          return {
+            type: {% if s.enable_loop %}'loop'{% else %}'slide'{% endif %},
+            perPage: {{ s.per_view_desktop }},
+            perMove: 1,
+            gap: '{{ s.gap_desktop }}px',
+            speed: {{ s.slider_speed }},
+            arrows: true,
+            pagination: false,
+            drag: true,
+            keyboard: 'focused',
+            autoplay: autoplay,
+            interval: {{ s.autoplay_delay }},
+            pauseOnHover: {{ s.pause_on_hover | json }},
+            pauseOnFocus: true,
+            i18n: { prev: 'Previous slide', next: 'Next slide' },
+            mediaQuery: 'max',
+            breakpoints: {
+              989: {
+                perPage: {{ s.per_view_tablet }},
+                gap: '{{ s.gap_tablet }}px'
+              },
+              749: {
+                perPage: {{ s.per_view_mobile }},
+                perMove: 1,
+                gap: '{{ s.gap_mobile }}px'
+                {%- if s.enable_mobile_peek %},
+                padding: { right: '{{ s.mobile_peek }}%' }
+                {%- endif %}
+              }
+            }
+          };
+        }
+
+        /* ---------------- Arrows ---------------- */
+        measureArrows() {
+          var media = this.querySelector('[data-vp-media]');
+          if (!media) return;
+
+          var height = media.getBoundingClientRect().height;
+          if (!height) return;
+
+          this.style.setProperty('--vp-arrow-top', Math.round(height / 2) + 'px');
+
+          if (!this.resizeObserver && 'ResizeObserver' in window) {
+            this.resizeObserver = new ResizeObserver(this.measureArrows);
+            this.resizeObserver.observe(media);
+          }
+        }
+
+        /* ---------------- Videos ---------------- */
+        setupVideos() {
+          var self = this;
+          this.videos = Array.prototype.slice.call(this.querySelectorAll('video'));
+          if (!this.videos.length) return;
+
+          this.videos.forEach(function (video) {
+            var wrapper = video.closest('[data-vp-media]');
+            var poster = wrapper && wrapper.getAttribute('data-vp-poster');
+            if (poster) video.setAttribute('poster', poster);
+            video.muted = true;
+            video.loop = true;
+            video.setAttribute('playsinline', '');
+            video.setAttribute('disablepictureinpicture', '');
+          });
+
+          if (!('IntersectionObserver' in window)) {
+            this.inViewport = true;
+            this.videos.forEach(function (video) { video.dataset.vpVisible = 'true'; });
+            this.updateVideos();
+            return;
+          }
+
+          /* Is the section itself on screen? */
+          this.sectionObserver = new IntersectionObserver(
+            function (entries) {
+              self.inViewport = entries[0].isIntersecting;
+              self.updateVideos();
+            },
+            { rootMargin: '200px 0px' }
+          );
+          this.sectionObserver.observe(this);
+
+          /* Is this slide inside the visible part of the track? */
+          this.slideObserver = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                entry.target.dataset.vpVisible = entry.isIntersecting ? 'true' : 'false';
+              });
+              self.updateVideos();
+            },
+            { root: this.track, threshold: 0.25 }
+          );
+
+          this.videos.forEach(function (video) {
+            self.slideObserver.observe(video);
+          });
+        }
+
+        updateVideos() {
+          if (!this.videos || !this.videos.length) return;
+          var playable = this.inViewport && !this.reduceMotion;
+
+          this.videos.forEach(function (video) {
+            var displayed = video.offsetParent !== null;
+            var visible = video.dataset.vpVisible !== 'false';
+
+            if (playable && displayed && visible) {
+              if (video.paused) {
+                var attempt = video.play();
+                if (attempt && typeof attempt.catch === 'function') attempt.catch(function () { /* autoplay blocked */ });
+              }
+            } else if (!video.paused) {
+              video.pause();
+            }
+          });
+        }
+
+        /* ---------------- Theme editor ---------------- */
+        handleBlockSelect(event) {
+          if (!this.splide || !event.target || !event.target.closest) return;
+          var slide = event.target.closest('[data-slide-index]');
+          if (!slide || !this.contains(slide)) return;
+
+          var index = parseInt(slide.getAttribute('data-slide-index'), 10);
+          if (!isNaN(index)) this.splide.go(index);
+        }
+      }
+    );
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Video + product slider",
+  "tag": "section",
+  "class": "section video-products-section",
+  "max_blocks": 15,
+  "settings": [
+    { "type": "header", "content": "Section" },
+    {
+      "type": "checkbox",
+      "id": "show_heading",
+      "label": "Show heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "See it in action"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size (desktop)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading size (mobile)",
+      "min": 14,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#121212"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Heading bottom spacing (desktop)",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing_mobile",
+      "label": "Heading bottom spacing (mobile)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "range",
+      "id": "per_view_desktop",
+      "label": "Products per view (desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "per_view_tablet",
+      "label": "Products per view (tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "per_view_mobile",
+      "label": "Products per view (mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap (desktop)",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_tablet",
+      "label": "Gap (tablet)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap (mobile)",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile_peek",
+      "label": "Show next card peek on mobile",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "mobile_peek",
+      "label": "Mobile peek width",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "%",
+      "default": 15
+    },
+
+    { "type": "header", "content": "Section spacing" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+
+    { "type": "header", "content": "Video" },
+    {
+      "type": "select",
+      "id": "video_ratio",
+      "label": "Video aspect ratio",
+      "options": [
+        { "value": "portrait", "label": "Portrait (3:4)" },
+        { "value": "square", "label": "Square (1:1)" },
+        { "value": "landscape", "label": "Landscape (4:3)" }
+      ],
+      "default": "portrait"
+    },
+    {
+      "type": "range",
+      "id": "video_radius",
+      "label": "Video border radius (desktop)",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "video_radius_mobile",
+      "label": "Video border radius (mobile)",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_link",
+      "label": "Link video to product",
+      "default": true
+    },
+
+    { "type": "header", "content": "Product card", "info": "These options are passed to the theme's card-product snippet." },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "options": [
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "square", "label": "Square" },
+        { "value": "portrait", "label": "Portrait" }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "label": "Show second image on hover",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show product rating",
+      "default": false
+    },
+
+    { "type": "header", "content": "Outer card" },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Border color",
+      "default": "#e6e7ea"
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "card_overflow",
+      "label": "Clip content to card radius",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "label": "Content padding (desktop)",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "content_padding_mobile",
+      "label": "Content padding (mobile)",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "video_gap",
+      "label": "Video to product card gap (desktop)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "video_gap_mobile",
+      "label": "Video to product card gap (mobile)",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+
+    { "type": "header", "content": "Add to cart", "info": "Add to cart is rendered by the custom-atc snippet." },
+    {
+      "type": "select",
+      "id": "quick_add_type",
+      "label": "Add to cart type",
+      "info": "Passed to custom-atc. It renders nothing when set to None.",
+      "options": [
+        { "value": "standard", "label": "Standard" },
+        { "value": "bulk", "label": "Bulk" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "standard"
+    },
+    {
+      "type": "checkbox",
+      "id": "horizontal_quick_add",
+      "label": "Horizontal Add to cart layout",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "atc_spacing",
+      "label": "Space above Add to cart (desktop)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "atc_spacing_mobile",
+      "label": "Space above Add to cart (mobile)",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+
+    { "type": "header", "content": "Slider" },
+    {
+      "type": "checkbox",
+      "id": "enable_loop",
+      "label": "Enable infinite loop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "label": "Slider speed",
+      "min": 200,
+      "max": 2000,
+      "step": 50,
+      "unit": "ms",
+      "default": 600
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable carousel autoplay",
+      "info": "Off by default because the cards already play video.",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay delay",
+      "min": 2000,
+      "max": 8000,
+      "step": 400,
+      "unit": "ms",
+      "default": 4000
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause autoplay on hover",
+      "default": true
+    },
+
+    { "type": "header", "content": "Arrows" },
+    {
+      "type": "checkbox",
+      "id": "show_arrows_desktop",
+      "label": "Show arrows on desktop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows_tablet",
+      "label": "Show arrows on tablet",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows_mobile",
+      "label": "Show arrows on mobile",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "arrow_background",
+      "label": "Arrow background",
+      "default": "#e5121e"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "label": "Arrow size (desktop)",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "arrow_size_mobile",
+      "label": "Arrow size (mobile)",
+      "min": 20,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "arrow_radius",
+      "label": "Arrow border radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "arrow_offset_prev",
+      "label": "Previous arrow offset",
+      "info": "Negative values move the arrow outside the slider.",
+      "min": -40,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": -14
+    },
+    {
+      "type": "range",
+      "id": "arrow_offset_next",
+      "label": "Next arrow offset",
+      "min": -40,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": -14
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_product",
+      "name": "Video + Product",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Desktop / Main video"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "Mobile video",
+          "info": "Optional. Falls back to the main video."
+        },
+        {
+          "type": "image_picker",
+          "id": "video_poster",
+          "label": "Video poster"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video + product slider",
+      "blocks": [
+        { "type": "video_product" },
+        { "type": "video_product" },
+        { "type": "video_product" },
+        { "type": "video_product" }
+      ]
+    }
+  ]
+}
+{% endschema %}
