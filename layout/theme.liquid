@@ -64,6 +64,16 @@ shopify-forms-embed {
   width: 100% !important;
   max-width: 100% !important;
 }
+.shopify-block-shopify-app-block {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.shopify-block-shopify-app-block [data-form-root="true"] {
+  width: 100%;
+  max-width: 100%;
+}
 </style>
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
