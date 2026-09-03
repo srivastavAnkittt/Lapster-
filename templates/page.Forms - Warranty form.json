@@ -41,9 +41,7 @@
       "block_order": [
         "e3d28885-a204-46df-ad64-067ffa3c5f03"
       ],
-      "custom_css": [
-        "@media (min-width: 768px);"
-      ],
+      "custom_css": [],
       "settings": {
         "include_margins": true
       }
