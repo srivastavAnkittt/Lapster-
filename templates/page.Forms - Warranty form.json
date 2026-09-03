@@ -41,7 +41,9 @@
       "block_order": [
         "e3d28885-a204-46df-ad64-067ffa3c5f03"
       ],
-      "custom_css": [],
+      "custom_css": [
+        "._formContainer_1q1d2_30 _grid_1q1d2_148 _noImage_1q1d2_161{max-width: 85% !important;}"
+      ],
       "settings": {
         "include_margins": true
       }
